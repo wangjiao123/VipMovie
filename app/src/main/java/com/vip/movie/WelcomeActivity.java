@@ -52,7 +52,7 @@ public class WelcomeActivity extends AppCompatActivity {
         });
         iv_start.startAnimation(scaleAnimation);
     }
-    //跳转
+    //跳范德萨发生转
     private void startActivity() {
         Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(intent);
