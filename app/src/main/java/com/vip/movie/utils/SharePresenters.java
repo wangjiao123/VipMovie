@@ -3,7 +3,8 @@ package com.vip.movie.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.six.jdcom.adapter.MyApp;
+
+import com.vip.movie.MyApp;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
