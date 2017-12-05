@@ -1,4 +1,5 @@
 <resources>
+    <string name="bawei">八维研修学院</string>
     <string name="app_name">VIP看看</string>
     <string name="loading_failed">数据加载失败</string>
     <string name="author">VIP看看客户端</string>
@@ -7,6 +8,7 @@
     <string name="score">评分：</string>
     <string name="videoType">类型：</string>
     <string name="region">地区：</string>
+
     <string name="airTime">上映时间：</string>
     <string name="video_intro">简介</string>
     <string name="video_comment">评论</string>
