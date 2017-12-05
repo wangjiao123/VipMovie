@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.vip.movie.R;
 
 /**
- * Created by wangjiao on 2017/12/4.
+ * Created by chentong on 2017/12/4.
  */
 
 public class Framgmentfour extends Fragment {
