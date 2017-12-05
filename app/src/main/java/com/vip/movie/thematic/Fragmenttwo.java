@@ -10,12 +10,13 @@ import android.view.ViewGroup;
 import com.vip.movie.R;
 
 /**
- * Created by wangjiao on 2017/12/4.
+ * Created by jingzhuang on 2017/12/4.
  */
 
 public class Fragmenttwo extends Fragment {
     @Nullable
     @Override
+    //景zz
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.two,null);
         return view;
