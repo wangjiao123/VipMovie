@@ -1,4 +1,4 @@
-package com.vip.movie;
+package com.vip.movie.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+
+import com.vip.movie.MainActivity;
+import com.vip.movie.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -23,8 +26,6 @@ public class WelcomeActivity extends AppCompatActivity {
         initImage();
 
     }
-
-
 
     private void initImage() {
         ImageView iv_start = (ImageView) findViewById(R.id.iv_start);
