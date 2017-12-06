@@ -6,8 +6,21 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     tools:context="com.vip.movie.MainActivity">
+    <com.vip.movie.ResideLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <include
+        android:id="@+id/head"
+        layout="@layout/cl_layout">
+    </include>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <FrameLayout
         android:id="@+id/fl"
+        android:background="@mipmap/bg_colorful"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
     <RadioGroup
@@ -61,7 +74,6 @@
             android:layout_width="match_parent"
             android:layout_height="63dp" />
     </RadioGroup>
-
-
-
+        </RelativeLayout>
+</com.vip.movie.ResideLayout>
 </RelativeLayout>
