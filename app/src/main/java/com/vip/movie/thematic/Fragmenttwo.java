@@ -69,7 +69,7 @@ public class Fragmenttwo extends Fragment implements Twoview{
             public void onItemClick(View view, int position) {
 
                 Intent in = new Intent(getActivity(), Zhuantifenlei.class);
-                String dataId = list.get(0).getChildList().get(position).getDataId();
+                String dataId = list.get(0).getChildList().get(position-1).getDataId();
                 in.putExtra("zhi", dataId);
                 startActivity(in);
             }

@@ -21,8 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".MainActivity" />
         <activity android:name=".thematic.Zhuantifenlei"></activity>
+
+
+
+
+        <activity android:name=".ShouchangActivity"></activity>
+
+
+
+
     </application>
 
 </manifest>
