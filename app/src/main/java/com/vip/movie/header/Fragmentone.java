@@ -1,5 +1,6 @@
 package com.vip.movie.header;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,10 +15,13 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.stx.xhb.xbanner.XBanner;
+import com.vip.movie.MainActivity;
 import com.vip.movie.R;
+import com.vip.movie.activitys.DetailsTwoActivity;
 import com.vip.movie.header.adapter.MyAdapter;
 import com.vip.movie.header.bean.Home;
 import com.vip.movie.header.control.ObservableScrollView;
@@ -110,6 +114,18 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
                 }
             }
         });
+
+
+        myAdapter.setOnItemClieckLinster(new MyAdapter.OnItemClieckLinster() {
+            @Override
+            public void onItemClickListener(View view, int pos) {
+                startActivity();
+            }
+
+            @Override
+            public void onItemLongClickListener(View view, int pos) {
+            }
+        });
     }
 
 
@@ -134,10 +150,26 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
         });
 
 
+        //recyclerView条目添加适配器
         List<Home.RetBean.ListBean> list1 = list.getList();
         myAdapter = new MyAdapter(getActivity(), list1);
         recycler.setAdapter(myAdapter);//设置适配器
 
+        //Xbanner跳转
+        xb.setOnItemClickListener(new XBanner.OnItemClickListener() {
+            @Override
+            public void onItemClick(XBanner banner, int position) {
+                //跳转到详情页面
+                Toasts.showShort(getActivity() , "tangtangtangtangtang");
+                 startActivity();
+            }
+        });
+
+
+    }
+
+    private void startActivity() {
+        startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
     }
 
     @Override

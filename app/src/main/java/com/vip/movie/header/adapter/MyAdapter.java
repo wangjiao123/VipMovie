@@ -39,9 +39,42 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.iv.setImageURI(list.get(4).getChildList().get(position).getPic());
         holder.tv.setText(list.get(4).getChildList().get(position).getTitle());
+
+        if(onItemClieckLinster != null){
+
+            //onitemclicklistener
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onItemClieckLinster.onItemClickListener(holder.itemView , position);
+                }
+            });
+
+            //onitemlongclicklistener
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+
+                    onItemClieckLinster.onItemLongClickListener(holder.itemView , position);
+                    return false;
+                }
+            });
+        }
+
+    }
+
+    public interface OnItemClieckLinster{
+
+        void onItemClickListener(View view , int pos);
+        void onItemLongClickListener(View view , int pos);
+    }
+    private OnItemClieckLinster onItemClieckLinster;
+    public void setOnItemClieckLinster(OnItemClieckLinster listener){
+
+        this.onItemClieckLinster = listener;
     }
 
     @Override
