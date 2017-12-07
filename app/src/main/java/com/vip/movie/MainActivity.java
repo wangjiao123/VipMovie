@@ -73,7 +73,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         fen.setOnClickListener(this);
         gou.setOnClickListener(this);
         my.setOnClickListener(this);
-        //ll
+        //ll1
         fm.beginTransaction().replace(R.id.fl , one).commit();
         shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy_select), null, null);
         shou.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
