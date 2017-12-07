@@ -58,6 +58,7 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
     private int height;
     private HomePresenter homePresenter;
     private MyAdapter myAdapter;
+    private List<Home.RetBean.ListBean> list1;
 
     @Nullable
     @Override
@@ -116,16 +117,7 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
         });
 
 
-        myAdapter.setOnItemClieckLinster(new MyAdapter.OnItemClieckLinster() {
-            @Override
-            public void onItemClickListener(View view, int pos) {
-                startActivity();
-            }
 
-            @Override
-            public void onItemLongClickListener(View view, int pos) {
-            }
-        });
     }
 
 
@@ -151,9 +143,21 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
 
 
         //recyclerView条目添加适配器
-        List<Home.RetBean.ListBean> list1 = list.getList();
+        list1 = list.getList();
         myAdapter = new MyAdapter(getActivity(), list1);
         recycler.setAdapter(myAdapter);//设置适配器
+
+
+        myAdapter.setOnItemClieckLinster(new MyAdapter.OnItemClieckLinster() {
+            @Override
+            public void onItemClickListener(View view, int pos) {
+                startActivity();
+            }
+
+            @Override
+            public void onItemLongClickListener(View view, int pos) {
+            }
+        });
 
         //Xbanner跳转
         xb.setOnItemClickListener(new XBanner.OnItemClickListener() {
