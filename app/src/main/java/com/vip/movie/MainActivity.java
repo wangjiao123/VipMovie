@@ -106,7 +106,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 my.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
                 break;
             case R.id.fen:
+
                 fm.beginTransaction().replace(R.id.fl, two).commit();
+
+
+                fm.beginTransaction().replace(R.id.fl , two).commit();
 
                 shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy), null, null);
                 shou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
