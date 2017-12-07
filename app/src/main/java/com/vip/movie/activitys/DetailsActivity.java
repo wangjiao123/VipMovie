@@ -1,9 +1,8 @@
 package com.vip.movie.activitys;
 
-/**
- * Created by Administrator on 2017/12/6 0006.
- */
+import android.support.v7.app.AppCompatActivity;
 
+import java.util.List;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -152,8 +151,9 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
-         /*View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_view_player, null);
-        setContentView(rootView);*/
+View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_view_player, null);
+        setContentView(rootView);
+
         String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
         Toast.makeText(DetailsActivity.this, url, Toast.LENGTH_SHORT).show();
         new PlayerView(this)

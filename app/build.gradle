@@ -106,7 +106,6 @@ dependencies {
     //eventbus
     compile 'org.greenrobot:eventbus:3.0.0'
 
-
     //ijkplayer
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
 
