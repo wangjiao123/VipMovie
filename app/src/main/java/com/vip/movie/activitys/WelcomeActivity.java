@@ -11,7 +11,9 @@ import android.widget.ImageView;
 
 import com.vip.movie.MainActivity;
 import com.vip.movie.R;
-
+/**
+ * Created by Tangao on 2017/12/5.
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
