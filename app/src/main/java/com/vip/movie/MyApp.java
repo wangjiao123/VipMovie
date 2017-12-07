@@ -3,6 +3,8 @@ package com.vip.movie;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 /**
  * Created by TA on 2017/12/5.
  */
@@ -18,5 +20,8 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+        //必须初始化Fresco,不然加载不出来图片
+        Fresco.initialize(this);
     }
+
 }
