@@ -5,12 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vip.movie.R;
 import com.vip.movie.thematic.bean.Myhome;
 
@@ -55,7 +57,8 @@ public class TwoAdapter extends RecyclerView.Adapter<TwoAdapter.MyViewHolder>{
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
         holder.tv.setText(mDatas.get(position).getTitle());
-        holder.sim.setImageURI(mDatas.get(position).getPic());
+        ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
+       /* holder.sim.setImageURI(mDatas.get(position).getPic());
         //创建DraweeController
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 //重试之后要加载的图片URI地址
@@ -69,7 +72,7 @@ public class TwoAdapter extends RecyclerView.Adapter<TwoAdapter.MyViewHolder>{
                 //构建
                 .build();
         //设置DraweeController
-        holder.sim.setController(controller);
+        holder.sim.setController(controller);*/
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,11 +104,11 @@ public class TwoAdapter extends RecyclerView.Adapter<TwoAdapter.MyViewHolder>{
     {
 
         TextView tv;
-        SimpleDraweeView sim;
+        ImageView sim;
         public MyViewHolder(View view)
         {
             super(view);
-            sim=view.findViewById(R.id.main_sdv2);
+            sim=view.findViewById(R.id.swpp);
             tv = (TextView) view.findViewById(R.id.bujute);
         }
     }
