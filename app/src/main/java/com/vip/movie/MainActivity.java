@@ -1,11 +1,16 @@
 package com.vip.movie;
 
+
 import android.content.Intent;
+
+import android.os.Build;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -68,7 +73,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         fen.setOnClickListener(this);
         gou.setOnClickListener(this);
         my.setOnClickListener(this);
-
+        fm.beginTransaction().replace(R.id.fl , one).commit();
         shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy_select), null, null);
         shou.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
         fen.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.found), null, null);
@@ -77,6 +82,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         gou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
         my.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.my), null, null);
         my.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
+        //设置透明状态栏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        }
     }
 
 
