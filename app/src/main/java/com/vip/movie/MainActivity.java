@@ -1,12 +1,20 @@
 package com.vip.movie;
 
+
+import android.content.Intent;
+
+import android.os.Build;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vip.movie.found.Fragmentthree;
 import com.vip.movie.header.Fragmentone;
@@ -15,11 +23,10 @@ import com.vip.movie.thematic.Fragmenttwo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
-
-
     @BindView(R.id.shou)
     RadioButton shou;
     @BindView(R.id.fen)
@@ -31,6 +38,22 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @BindView(R.id.fl)
     FrameLayout fl;
     FragmentManager fm;
+    @BindView(R.id.Ilike)
+    TextView Ilike;
+    @BindView(R.id.myload)
+    TextView myload;
+    @BindView(R.id.fuli)
+    TextView fuli;
+    @BindView(R.id.share)
+    TextView share;
+    @BindView(R.id.talk)
+    TextView talk;
+    @BindView(R.id.setting)
+    TextView setting;
+    @BindView(R.id.about)
+    TextView about;
+    @BindView(R.id.title)
+    TextView title;
     private Fragmentone one;
     private Fragmenttwo two;
     private Fragmentthree three;
@@ -50,7 +73,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         fen.setOnClickListener(this);
         gou.setOnClickListener(this);
         my.setOnClickListener(this);
-
+        fm.beginTransaction().replace(R.id.fl , one).commit();
         shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy_select), null, null);
         shou.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
         fen.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.found), null, null);
@@ -59,6 +82,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         gou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
         my.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.my), null, null);
         my.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
+        //设置透明状态栏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        }
     }
 
 
@@ -66,7 +95,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.shou:
-            fm.beginTransaction().replace(R.id.fl , one).commit();
+                fm.beginTransaction().replace(R.id.fl, one).commit();
                 shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy_select), null, null);
                 shou.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
                 fen.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.found), null, null);
@@ -75,9 +104,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 gou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
                 my.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.my), null, null);
                 my.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
-            break;
+                break;
             case R.id.fen:
-                fm.beginTransaction().replace(R.id.fl , two).commit();
+                fm.beginTransaction().replace(R.id.fl, two).commit();
 
                 shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy), null, null);
                 shou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
@@ -89,7 +118,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 my.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
                 break;
             case R.id.gou:
-                fm.beginTransaction().replace(R.id.fl , three).commit();
+                fm.beginTransaction().replace(R.id.fl, three).commit();
                 shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy), null, null);
                 shou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
                 fen.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.found), null, null);
@@ -100,7 +129,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 my.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
                 break;
             case R.id.my:
-                fm.beginTransaction().replace(R.id.fl , four).commit();
+                fm.beginTransaction().replace(R.id.fl, four).commit();
                 shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy), null, null);
                 shou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
                 fen.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.found), null, null);
@@ -109,6 +138,32 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 gou.setTextColor(ContextCompat.getColor(this, R.color.colorHint));
                 my.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.my_select), null, null);
                 my.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
+                break;
+        }
+    }
+
+    @OnClick({R.id.Ilike, R.id.myload, R.id.fuli, R.id.share, R.id.talk, R.id.setting, R.id.about, R.id.title})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.Ilike:
+                Intent intent=new Intent(MainActivity.this,ShouchangActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.myload:
+                Toast.makeText(MainActivity.this,"敬请期待",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.fuli:
+                break;
+            case R.id.share:
+
+                break;
+            case R.id.talk:
+                break;
+            case R.id.setting:
+                break;
+            case R.id.about:
+                break;
+            case R.id.title:
                 break;
         }
     }
