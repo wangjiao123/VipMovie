@@ -1,5 +1,9 @@
 package com.vip.movie.header;
 
+
+import com.vip.movie.R;
+import com.vip.movie.base.BaseFragment;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -37,9 +41,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+
 /**
  * Created by Tangao on 2017/12/4.
  */
+
+
+public class Fragmentone extends BaseFragment{
+
+    @Override
+    protected int getLayout() {
+        return R.layout.one;
 
 public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.xb)
@@ -71,6 +83,7 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
         initView();
 
         return view;
+
     }
 
 /*    private void initData() {

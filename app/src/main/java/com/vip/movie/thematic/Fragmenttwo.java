@@ -1,5 +1,8 @@
 package com.vip.movie.thematic;
 
+
+import com.vip.movie.R;
+import com.vip.movie.base.BaseFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.vip.movie.R;
 import com.vip.movie.thematic.apdate.TwoAdapter;
 import com.vip.movie.thematic.bean.Myhome;
 import com.vip.movie.thematic.bean.Myxiang;
@@ -24,9 +26,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+
 /**
  * Created by jingzhuang on 2017/12/4.
  */
+
+
+public class Fragmenttwo extends BaseFragment {
+
+    @Override
+    protected int getLayout() {
+        return R.layout.two;
 
 public class Fragmenttwo extends Fragment implements Twoview{
 
@@ -50,6 +60,7 @@ public class Fragmenttwo extends Fragment implements Twoview{
         twopresenter.login();
 
         return view;
+
     }
 
 

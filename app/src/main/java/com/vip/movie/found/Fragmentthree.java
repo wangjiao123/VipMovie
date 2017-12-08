@@ -1,5 +1,8 @@
 package com.vip.movie.found;
 
+
+import com.vip.movie.R;
+import com.vip.movie.base.BaseFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +16,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.vip.movie.MyApp;
-import com.vip.movie.R;
 import com.vip.movie.found.bean.CardBean;
 import com.vip.movie.found.bean.CardConfig;
 import com.vip.movie.found.bean.CardItemTouchHelperCallBack;
@@ -32,9 +34,18 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+
 /**
  * Created by wangjiao on 2017/12/4.
  */
+
+
+public class Fragmentthree extends BaseFragment {
+
+
+    @Override
+    protected int getLayout() {
+        return R.layout.three;
 
 public class Fragmentthree extends Fragment implements Found_view {
     @BindView(R.id.recyclerView)
@@ -60,6 +71,7 @@ public class Fragmentthree extends Fragment implements Found_view {
         mypre.setcardurl(Api.Card_User, 1);
 
         return view;
+
     }
 
     public static int[] getNumber(int total) {

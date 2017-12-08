@@ -3,10 +3,10 @@
     package="com.vip.movie">
 
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
 
     <application
         android:name=".MyApp"
@@ -29,14 +29,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/CustomTransparent" />
+        <activity android:name=".activitys.SettingsActivity"></activity>
         </activity>
-
         <activity android:name=".activitys.DetailsActivity"></activity>
         <activity android:name=".activitys.DetailsTwoActivity"></activity>
         <activity android:name=".thematic.Zhuantifenlei"></activity>
         <activity android:name=".ShouchangActivity"></activity>
-
     </application>
 
 </manifest>

@@ -1,12 +1,14 @@
 package com.vip.movie;
 
 
-import android.content.Intent;
+import android.support.annotation.NonNull;
 
-import android.os.Build;
+
+import android.content.Intent;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -16,17 +18,25 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.color.ColorChooserDialog;
+import com.vip.movie.base.BaseActivity;
 import com.vip.movie.found.Fragmentthree;
 import com.vip.movie.header.Fragmentone;
 import com.vip.movie.me.Framgmentfour;
 import com.vip.movie.thematic.Fragmenttwo;
+import com.vip.movie.utils.theme.ThemeUtil;
+
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener {
+
+public class MainActivity extends BaseActivity implements View.OnClickListener,ColorChooserDialog.ColorCallback {
+    public static final String Set_Theme_Color = "Set_Theme_Color";
     @BindView(R.id.shou)
     RadioButton shou;
     @BindView(R.id.fen)
@@ -60,10 +70,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Framgmentfour four;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
+        EventBus.getDefault().register(this);
+        super.initView();
+
         fm = getSupportFragmentManager();
         one = new Fragmentone();
         two = new Fragmenttwo();
@@ -92,6 +107,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
+
+
+    @Subscriber(tag = Framgmentfour.SET_THEME)
+    public void setTheme(String content) {
+        new ColorChooserDialog.Builder(this, R.string.theme)
+                .customColors(R.array.colors, null)
+                .doneButton(R.string.done)
+                .cancelButton(R.string.cancel)
+                .allowUserColorInput(false)
+                .allowUserColorInputAlpha(false)
+                .show(this);
+    }
 
     @Override
     public void onClick(View v) {
@@ -146,6 +173,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 my.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
                 break;
         }
+    }
+
+
+    @Override
+    public void onColorSelection(@NonNull ColorChooserDialog dialog, int selectedColor) {
+        ThemeUtil.onColorSelection(this, dialog, selectedColor);
+        EventBus.getDefault().post("", Set_Theme_Color);
+    }
+
+    @Override
+    public void onColorChooserDismissed(@NonNull ColorChooserDialog dialog) {
+
     }
 
     @OnClick({R.id.Ilike, R.id.myload, R.id.fuli, R.id.share, R.id.talk, R.id.setting, R.id.about, R.id.title})

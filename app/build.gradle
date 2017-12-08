@@ -32,8 +32,10 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
+
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
@@ -79,6 +81,7 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:1.0.6'
     //recyclerview
 
+
     //noinspection GradleCompatible
     compile 'com.android.support:mediarouter-v7:25.0.0'
     //noinspection GradleCompatible
@@ -87,6 +90,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.0'
     //noinspection GradleCompatible
     compile 'com.android.support:appcompat-v7:23.4.0'
+
 
     //Xbanner
     compile 'com.xhb:xbanner:1.2.2'
@@ -106,5 +110,18 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     //ijkplayer
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
+
+    compile 'me.yokeyword:fragmentation:0.7.7'
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'com.github.tony19:logback-android-core:1.1.1-5'
+    compile 'com.github.tony19:logback-android-classic:1.1.1-5'
+    compile 'com.orhanobut:logger:2.1.1'
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'org.simple:androideventbus:1.0.5.1'
+    compile 'com.afollestad.material-dialogs:core:0.9.6.0'
+    compile 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.mikepenz:iconics-core:2.8.2@aar'
 
 }
