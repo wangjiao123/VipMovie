@@ -2,6 +2,11 @@ package com.vip.movie;
 
 import android.app.Application;
 import android.content.Context;
+import android.media.Image;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -22,6 +27,13 @@ public class MyApp extends Application {
         context = this;
         //必须初始化Fresco,不然加载不出来图片
         Fresco.initialize(this);
+
     }
 
 }
+        ImageLoaderConfiguration aDefault = ImageLoaderConfiguration.createDefault(getApplicationContext());
+        ImageLoader.getInstance().init(aDefault);
+    }
+
+}
+
