@@ -13,6 +13,7 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vip.movie.R;
+import com.vip.movie.thematic.bean.Myhome;
 import com.vip.movie.thematic.bean.Myxiang;
 
 import java.util.ArrayList;
@@ -24,9 +25,9 @@ import java.util.List;
 
 public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     Context context;
-    List<Myxiang.RetBean.ListBean.ChildListBean>  mDatas;
+    List<Myhome.RetBean.ListBean.ChildListBean>  mDatas;
 
-    public ZhiAdapter(List<Myxiang.RetBean.ListBean.ChildListBean> mdatas, Context context) {
+    public ZhiAdapter(List<Myhome.RetBean.ListBean.ChildListBean> mdatas, Context context) {
         this.mDatas = mdatas;
         this.context = context;
     }
@@ -57,8 +58,8 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
         holder.tv.setText(mDatas.get(position).getTitle());
-
-        ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
+        holder.sim.setImageURI(mDatas.get(position).getPic());
+        //ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
        /* //创建DraweeController
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 //重试之后要加载的图片URI地址
@@ -104,7 +105,7 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     {
 
         TextView tv;
-        ImageView sim;
+        SimpleDraweeView sim;
         public MyViewHolder(View view)
         {
             super(view);

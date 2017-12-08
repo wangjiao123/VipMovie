@@ -42,7 +42,7 @@
 
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".thematic.Zhuantifenlei"></activity>
+        <activity android:name=".thematic.Zhuantifenlei" android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
 
 
 
