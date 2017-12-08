@@ -11,11 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.vip.movie.R;
+import com.vip.movie.activitys.DetailsTwoActivity;
 import com.vip.movie.thematic.apdate.ZhiAdapter;
 import com.vip.movie.thematic.bean.Myhome;
 import com.vip.movie.thematic.bean.Myxiang;
 import com.vip.movie.thematic.twopresenter.Twopresenter;
 import com.vip.movie.thematic.twoview.Twoview;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,8 +57,8 @@ public class Zhuantifenlei extends AppCompatActivity implements Twoview {
     }
 
     @Override
-    public void onLoginSuccess2(Myxiang.RetBean list) {
-        List<Myxiang.RetBean.ListBean.ChildListBean> childList = list.getList().get(0).getChildList();
+    public void onLoginSuccess2(final Myxiang.RetBean list) {
+        final List<Myxiang.RetBean.ListBean.ChildListBean> childList = list.getList().get(0).getChildList();
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview);
         manager = new GridLayoutManager(Zhuantifenlei.this, 3);
        /* mRecyclerView.addItemDecoration(new DividerItemDecoration(this,
@@ -67,6 +70,9 @@ public class Zhuantifenlei extends AppCompatActivity implements Twoview {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(Zhuantifenlei.this, "点击+" + position, Toast.LENGTH_SHORT).show();
+                EventBus.getDefault().postSticky(new EventBusStickMessage(childList.get(position).getDataId()));
+                Intent in=new Intent(Zhuantifenlei.this, DetailsTwoActivity.class);
+                startActivity(in);
             }
 
             @Override
@@ -80,4 +86,11 @@ public class Zhuantifenlei extends AppCompatActivity implements Twoview {
     public void onViewClicked() {
         finish();
     }
+    public class EventBusStickMessage {
+        public  String Message;
+        public  EventBusStickMessage(String message){
+            Message =message;
+        }
+    }
+
 }
