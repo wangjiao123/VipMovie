@@ -7,16 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import com.vip.movie.R;
 import com.vip.movie.thematic.bean.Myhome;
 import com.vip.movie.thematic.bean.Myxiang;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,22 +54,9 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
         holder.tv.setText(mDatas.get(position).getTitle());
-        holder.sim.setImageURI(mDatas.get(position).getPic());
-        //ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
-       /* //创建DraweeController
-        DraweeController controller = Fresco.newDraweeControllerBuilder()
-                //重试之后要加载的图片URI地址
-                .setUri(mDatas.get(position).getPic())
-                //设置点击重试是否开启
-                .setTapToRetryEnabled(true)
-                //动画播放
-                .setAutoPlayAnimations(true)
-                //设置旧的Controller
-                .setOldController(holder.sim.getController())
-                //构建
-                .build();
-        //设置DraweeController
-        holder.sim.setController(controller);*/
+
+        ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
+
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

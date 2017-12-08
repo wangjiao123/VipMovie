@@ -8,10 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vip.movie.R;
 import com.vip.movie.thematic.bean.Myhome;
@@ -47,10 +43,10 @@ public class TwoAdapter extends RecyclerView.Adapter<TwoAdapter.MyViewHolder>{
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                context).inflate(R.layout.itim_buju, parent,
-                false));
-        return holder;
+        View view = LayoutInflater.from(context).inflate(R.layout.itim_buju, parent,
+                false);
+        MyViewHolder viewHolder = new MyViewHolder(view);
+        return viewHolder;
     }
 
     @Override

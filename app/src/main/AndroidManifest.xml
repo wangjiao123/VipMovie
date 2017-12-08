@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vip.movie">
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-
 
 
     <application
@@ -27,8 +16,10 @@
 
         android:theme="@style/AppTheme">
 
-        android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity android:name=".activitys.WelcomeActivity">
+
+
+        android:theme="@style/Theme.Design.Light.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,26 +28,20 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity"></activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/CustomTransparent" />
+        <activity android:name=".activitys.SettingsActivity"></activity>
         <activity android:name=".activitys.DetailsActivity"></activity>
         <activity android:name=".activitys.DetailsTwoActivity"></activity>
-
 
         <activity android:name=".MainActivity" />
         <activity android:name=".thematic.Zhuantifenlei" android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
 
-
-
-
-
+        <activity android:name=".thematic.Zhuantifenlei"></activity>
         <activity android:name=".ShouchangActivity"></activity>
-
-
-
-
-
-
-
-
     </application>
 
 </manifest>
