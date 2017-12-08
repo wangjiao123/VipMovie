@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dou361.ijkplayer.widget.IjkVideoView;
 import com.dou361.ijkplayer.widget.PlayStateParams;
@@ -158,29 +157,19 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailstwo);
         ButterKnife.bind(this);
-         /*View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_view_player, null);
-        setContentView(rootView);*/
-        //String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
-        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
-
-
         EventBus.getDefault().register(this);
         mypre=new MyDeatilspresenter(this);
         mypre.setdetails(Api.Card_User,mediaid);
         mData=new ArrayList<>();
         tabLayout.getBackground().setAlpha(10);
         initView();
+
     }
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void receiveMessage(EventBusStickMessage eventBusStickMessage) {
         mediaid=eventBusStickMessage.Message;
-
-
-
     }
 
-
-    //在onDestory()方法中取消订阅：防止内存溢出
     @Override
     protected void onDestroy() {
         //移除所有黏性事件
@@ -189,12 +178,7 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
-//    private void initData(int pager) {
-//        mData = new ArrayList<>();
-//        for (int i = 1; i < 50; i++) {
-//            mData.add("pager" + pager + " 第" + i + "个item");
-//        }
-//    }
+
 
     private void initView() {
 
@@ -204,8 +188,7 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-//                initData(tab.getPosition() + 1);
-//                setScrollViewContent();
+                    //  这里监听tab在哪个页面
             }
 
             @Override
@@ -222,19 +205,12 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
     }
 
     private void setScrollViewContent() {
-        //NestedScrollView下的LinearLayout
 
         layout.removeAllViews();
-//        initData();
 
     }
 
-//    protected void initData() {
-//        mDatas = new ArrayList<String>();
-//        for (int i = 'A'; i < 'z'; i++) {
-//            mDatas.add("" + (char) i);
-//        }
-//    }
+
 
     @Override
     public void getdata(DetailsBean data) {
@@ -260,5 +236,11 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
             //动态添加 子View
             layout.addView(view, i);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        this.finish();
     }
 }
