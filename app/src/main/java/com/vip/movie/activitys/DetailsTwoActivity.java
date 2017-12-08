@@ -5,7 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -21,6 +20,15 @@ import com.dou361.ijkplayer.widget.PlayStateParams;
 import com.dou361.ijkplayer.widget.PlayerView;
 import com.vip.movie.R;
 import com.vip.movie.adapters.HomeAdapter;
+import com.vip.movie.details.bean.DetailsBean;
+import com.vip.movie.details.presenter.MyDeatilspresenter;
+import com.vip.movie.details.view.Details_view;
+import com.vip.movie.found.bean.EventBusStickMessage;
+import com.vip.movie.utils.Api;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +36,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailsTwoActivity extends AppCompatActivity {
+public class DetailsTwoActivity extends AppCompatActivity implements Details_view{
 
-    List<String> mData;
+
     @BindView(R.id.video_view)
     IjkVideoView videoView;
     @BindView(R.id.iv_trumb)
@@ -137,8 +145,14 @@ public class DetailsTwoActivity extends AppCompatActivity {
 
 
 
-    private List<String> mDatas;
+    private List<DetailsBean> mData;
     HomeAdapter mAdapter;
+    String mediaid="";
+    MyDeatilspresenter mypre;
+    private String url;
+    private String des;
+    private String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,45 +160,52 @@ public class DetailsTwoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
          /*View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_view_player, null);
         setContentView(rootView);*/
-        String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
+        //String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
         Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
-        new PlayerView(this)
-                .setTitle("什么")
-                .setScaleType(PlayStateParams.fitparent)
-                .hideMenu(true)
-                .forbidTouch(false)
-                .setPlaySource(url)
-                .startPlay();
-        initData(1);
+
+
+        EventBus.getDefault().register(this);
+        mypre=new MyDeatilspresenter(this);
+        mypre.setdetails(Api.Card_User,mediaid);
+        mData=new ArrayList<>();
+        tabLayout.getBackground().setAlpha(10);
         initView();
     }
-    private void initData(int pager) {
-        mData = new ArrayList<>();
-        for (int i = 1; i < 50; i++) {
-            mData.add("pager" + pager + " 第" + i + "个item");
-        }
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void receiveMessage(EventBusStickMessage eventBusStickMessage) {
+        mediaid=eventBusStickMessage.Message;
+
+
+
     }
 
-    private void initView() {
-        //设置ToolBar
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        toolbar.setTitle("");
-//        toolbar.setNavigationIcon(R.drawable.arrow_back);
-//        setSupportActionBar(toolbar);//替换系统的actionBar
 
-        //设置TabLayout
-//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+    //在onDestory()方法中取消订阅：防止内存溢出
+    @Override
+    protected void onDestroy() {
+        //移除所有黏性事件
+        EventBus.getDefault().removeAllStickyEvents();
+        //销毁EventBus
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+//    private void initData(int pager) {
+//        mData = new ArrayList<>();
+//        for (int i = 1; i < 50; i++) {
+//            mData.add("pager" + pager + " 第" + i + "个item");
+//        }
+//    }
+
+    private void initView() {
+
 
         tabLayout.addTab(tabLayout.newTab().setText("简介"));
         tabLayout.addTab(tabLayout.newTab().setText("评论"));
-        Log.d("main", "setScrollViewContent: 333333333333333333333333333333333");
-
-        //TabLayout的切换监听
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                initData(tab.getPosition() + 1);
-                setScrollViewContent();
+//                initData(tab.getPosition() + 1);
+//                setScrollViewContent();
             }
 
             @Override
@@ -204,24 +225,40 @@ public class DetailsTwoActivity extends AppCompatActivity {
         //NestedScrollView下的LinearLayout
 
         layout.removeAllViews();
-        initData();
+//        initData();
+
+    }
+
+//    protected void initData() {
+//        mDatas = new ArrayList<String>();
+//        for (int i = 'A'; i < 'z'; i++) {
+//            mDatas.add("" + (char) i);
+//        }
+//    }
+
+    @Override
+    public void getdata(DetailsBean data) {
+
+        url = data.getRet().getSmoothURL();
+        des = data.getRet().getDescription();
+        title = data.getRet().getTitle();
+        mData.add(data);
+
+        new PlayerView(this)
+                .setTitle(data.getRet().getTitle())
+                .setScaleType(PlayStateParams.fitparent)
+                .hideMenu(true)
+                .forbidTouch(false)
+                .setPlaySource(url)
+                .startPlay();
         for (int i = 0; i < mData.size(); i++) {
             View view = View.inflate(DetailsTwoActivity.this, R.layout.item_layout, null);
             RecyclerView idRecyclerview=view.findViewById(R.id.id_recyclerview);
             idRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-            Log.d("main", "setScrollViewContent: 000000000000000000000000000000000000000000000000000");
-            idRecyclerview.setAdapter(mAdapter = new HomeAdapter(DetailsTwoActivity.this, mDatas));
-
-
+//            Log.d("main", "setScrollViewContent: 000000000000000000000000000000000000000000000000000");
+            idRecyclerview.setAdapter(mAdapter = new HomeAdapter(DetailsTwoActivity.this, mData));
             //动态添加 子View
             layout.addView(view, i);
-        }
-    }
-
-    protected void initData() {
-        mDatas = new ArrayList<String>();
-        for (int i = 'A'; i < 'z'; i++) {
-            mDatas.add("" + (char) i);
         }
     }
 }
