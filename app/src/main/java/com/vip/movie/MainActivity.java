@@ -25,6 +25,7 @@ import butterknife.OnClick;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
+//    yanxin
     @BindView(R.id.shou)
     RadioButton shou;
     @BindView(R.id.fen)
