@@ -13,8 +13,6 @@ import com.vip.movie.MyApp;
 import com.vip.movie.R;
 import com.vip.movie.utils.KL;
 import com.vip.movie.utils.PreUtils;
-import com.vip.movie.utils.ScreenUtil;
-import com.vip.movie.utils.theme.ColorRelativeLayout;
 import com.vip.movie.utils.theme.Theme;
 
 import butterknife.ButterKnife;
@@ -166,17 +164,17 @@ public abstract class BaseActivity extends SupportActivity {
     }
 
     private void setTitleHeight(View view) {
-        if (view != null) {
-            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.title);
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-                if (title != null) {
-                    ViewGroup.LayoutParams lp = title.getLayoutParams();
-                    lp.height = ScreenUtil.dip2px(this, 48);
-                    title.setLayoutParams(lp);
-                    title.setPadding(0, 0, 0, 0);
-                }
-            }
-        }
+//        if (view != null) {
+//         ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.title);
+//            /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+//                if (title != null) {
+//                    ViewGroup.LayoutParams lp = title.getLayoutParams();
+//                    lp.height = ScreenUtil.dip2px(this, 48);
+//                    title.setLayoutParams(lp);
+//                    title.setPadding(0, 0, 0, 0);
+//                }
+//            }*/
+//        }
     }
 
     protected static View getRootView(Activity context) {

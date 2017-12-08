@@ -8,6 +8,18 @@
     android:clipToPadding="true"
     android:background="@mipmap/bg_colorful"
     tools:context="com.vip.movie.MainActivity">
+    <com.vip.movie.utils.theme.ColorRelativeLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/menuBackground">
+
+    </com.vip.movie.utils.theme.ColorRelativeLayout>
+    <com.vip.movie.utils.theme.ColorRelativeLayout
+        style="@style/both_match_style"
+        android:background="?attr/background">
+
+    </com.vip.movie.utils.theme.ColorRelativeLayout>
     <com.vip.movie.ResideLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

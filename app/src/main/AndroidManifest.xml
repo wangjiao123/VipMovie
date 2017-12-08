@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vip.movie">
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -33,7 +31,6 @@
             android:name=".MainActivity"
             android:theme="@style/CustomTransparent" />
         <activity android:name=".activitys.SettingsActivity"></activity>
-        </activity>
         <activity android:name=".activitys.DetailsActivity"></activity>
         <activity android:name=".activitys.DetailsTwoActivity"></activity>
         <activity android:name=".thematic.Zhuantifenlei"></activity>

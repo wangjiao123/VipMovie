@@ -1,14 +1,10 @@
 package com.vip.movie.header;
 
 
-import com.vip.movie.R;
-import com.vip.movie.base.BaseFragment;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,13 +15,12 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.stx.xhb.xbanner.XBanner;
-import com.vip.movie.MainActivity;
 import com.vip.movie.R;
 import com.vip.movie.activitys.DetailsTwoActivity;
+import com.vip.movie.base.BaseFragment;
 import com.vip.movie.header.adapter.MyAdapter;
 import com.vip.movie.header.bean.Home;
 import com.vip.movie.header.control.ObservableScrollView;
@@ -47,13 +42,13 @@ import butterknife.Unbinder;
  */
 
 
-public class Fragmentone extends BaseFragment{
+public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayout.OnRefreshListener{
 
     @Override
     protected int getLayout() {
         return R.layout.one;
+    }
 
-public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.xb)
     XBanner xb;
     @BindView(R.id.recycler)

@@ -1,11 +1,8 @@
 package com.vip.movie.found;
 
 
-import com.vip.movie.R;
-import com.vip.movie.base.BaseFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -16,6 +13,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.vip.movie.MyApp;
+import com.vip.movie.R;
+import com.vip.movie.base.BaseFragment;
 import com.vip.movie.found.bean.CardBean;
 import com.vip.movie.found.bean.CardConfig;
 import com.vip.movie.found.bean.CardItemTouchHelperCallBack;
@@ -40,14 +39,14 @@ import butterknife.Unbinder;
  */
 
 
-public class Fragmentthree extends BaseFragment {
+public class Fragmentthree extends BaseFragment implements Found_view {
 
 
     @Override
     protected int getLayout() {
         return R.layout.three;
+    }
 
-public class Fragmentthree extends Fragment implements Found_view {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     Unbinder unbinder;

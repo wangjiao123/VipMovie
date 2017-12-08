@@ -1,14 +1,9 @@
 package com.vip.movie;
 
 
-import android.support.annotation.NonNull;
-
-
 import android.content.Intent;
-
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-
+import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -30,9 +25,7 @@ import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,ColorChooserDialog.ColorCallback {
@@ -136,9 +129,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
                 break;
             case R.id.fen:
 
-                fm.beginTransaction().replace(R.id.fl, two).commit();
-
-
                 fm.beginTransaction().replace(R.id.fl , two).commit();
 
                 shou.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.fancy), null, null);
@@ -179,7 +169,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
     @Override
     public void onColorSelection(@NonNull ColorChooserDialog dialog, int selectedColor) {
         ThemeUtil.onColorSelection(this, dialog, selectedColor);
-        EventBus.getDefault().post("", Set_Theme_Color);
+//        EventBus.getDefault().post("",Set_Theme_Color);
+        EventBus.getDefault().post("",Set_Theme_Color);
     }
 
     @Override
