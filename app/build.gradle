@@ -76,12 +76,8 @@ dependencies {
     //recyclerview
     compile 'com.android.support:design:26.1.0'
     //Fresco
-
     compile 'com.facebook.fresco:fresco:0.14.0'
 
-    compile 'com.facebook.fresco:fresco:0.11.0'
-    // 其他依赖
-    compile 'com.facebook.fresco:fresco:0.12.0'
 
 
     //Glide
