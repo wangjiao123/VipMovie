@@ -27,12 +27,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activitys.DetailsActivity" />
         <activity android:name=".activitys.DetailsTwoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".thematic.Zhuantifenlei" />
         <activity android:name=".ShouchangActivity" />
         <activity android:name=".activitys.SearchActivity"></activity>
+
+
+
     </application>
 
 </manifest>

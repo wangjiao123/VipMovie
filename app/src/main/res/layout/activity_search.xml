@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_blue"
+    android:background="@mipmap/bg_colorful"
     tools:context="com.vip.movie.activitys.SearchActivity">
 
     <RelativeLayout
+
         android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/colorBluePrimary"
+        android:background="@color/colorPinkPrimary"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayout">
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/et_search"
@@ -28,11 +30,11 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
+                android:background="@color/colorAccent"
+                android:drawableLeft="@mipmap/search"
                 android:hint="请输入您喜欢的电影"
-                android:textSize="15sp"
                 android:textColorHint="@color/white"
-                android:background="@color/colorBluePrimaryDark"
-                android:drawableLeft="@mipmap/search" />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <TextView
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
+            android:textColor="@color/white"
             android:layout_toEndOf="@+id/linearLayout"
             android:text="搜索"
             android:textSize="20sp" />
@@ -69,9 +72,10 @@
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView"
+
             android:id="@+id/search_reach"></android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 

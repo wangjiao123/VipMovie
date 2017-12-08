@@ -79,6 +79,13 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
         homePresenter.getHome(Api.HOMEURL);
         initView();
 
+        et.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toasts.showShort(getActivity() , "sdfsadfsadfasdf");
+                startActivity(new Intent(getActivity() , SearchActivity.class));
+            }
+        });
         return view;
     }
 
@@ -191,9 +198,4 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
 
 
 
-    @OnClick(R.id.et_re)
-    public void onViewClicked() {
-        Toasts.showShort(getActivity() , "ssdfasdfasdfdasfasf            ");
-        startActivity(new Intent(getActivity() , SearchActivity.class));
-    }
 }
