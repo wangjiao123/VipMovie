@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="TextViewExpandableAnimation">
         <attr name="tvea_expandLines" format="integer" />
         <attr name="tvea_shrinkBitmap" format="reference" />
@@ -31,5 +32,10 @@
 
     <!--themeColor-->
     <attr name="colorPrimaryLight" format="color|reference" />
+
+
+    <declare-styleable name="RoundImageView">
+        <attr name="radius" format="reference|dimension" />
+    </declare-styleable>
 
 </resources>

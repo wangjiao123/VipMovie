@@ -6,6 +6,8 @@ import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,6 +40,8 @@ public class MyApp extends Application {
         instance=this;
         //必须初始化Fresco,不然加载不出来图片
         Fresco.initialize(this);
+        ImageLoaderConfiguration aDefault = ImageLoaderConfiguration.createDefault(getApplicationContext());
+        ImageLoader.getInstance().init(aDefault);
     }
     public void registerActivity(Activity act) {
         if (allActivities == null) {
@@ -68,3 +72,4 @@ public class MyApp extends Application {
 
 
 }
+
