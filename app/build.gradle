@@ -106,10 +106,15 @@ dependencies {
     compile 'com.orhanobut:logger:2.1.1'
     compile 'com.makeramen:roundedimageview:2.3.0'
     compile 'org.greenrobot:eventbus:3.0.0'
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
+
     compile 'org.simple:androideventbus:1.0.5.1'
     compile 'com.afollestad.material-dialogs:core:0.9.6.0'
     compile 'com.afollestad.material-dialogs:commons:0.9.6.0'
     compile 'com.android.support:design:26.1.0'
     compile 'com.mikepenz:iconics-core:2.8.2@aar'
     implementation 'com.android.support:appcompat-v7:26.1.0'
+
 }

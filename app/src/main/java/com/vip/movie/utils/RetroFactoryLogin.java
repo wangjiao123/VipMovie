@@ -14,7 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetroFactoryLogin {
     private RetroFactoryLogin() {
     }
-
     private static OkHttpClient httpClient = new OkHttpClient.Builder()
             .addInterceptor(new LoggingInterceptor()).connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)

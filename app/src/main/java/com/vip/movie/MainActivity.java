@@ -1,9 +1,17 @@
 package com.vip.movie;
 
 
+import android.os.Build;
+import android.content.Intent;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+
+
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -28,8 +36,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
+
+public class MainActivity extends FragmentActivity implements View.OnClickListener {
+
 public class MainActivity extends BaseActivity implements View.OnClickListener,ColorChooserDialog.ColorCallback {
     public static final String Set_Theme_Color = "Set_Theme_Color";
+
     @BindView(R.id.shou)
     RadioButton shou;
     @BindView(R.id.fen)
