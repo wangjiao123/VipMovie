@@ -163,6 +163,7 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
         myAdapter.setOnItemClieckLinster(new MyAdapter.OnItemClieckLinster() {
             @Override
             public void onItemClickListener(View view, int pos) {
+                //玩去
                 EventBus.getDefault().postSticky(new EventBusStickMessage(list1.get(4).getChildList().get(pos).getDataId()));
                 startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
             }
