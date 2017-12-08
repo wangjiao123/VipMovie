@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import com.vip.movie.R;
+import com.vip.movie.thematic.bean.Myhome;
 import com.vip.movie.thematic.bean.Myxiang;
 
 import java.util.List;
@@ -20,9 +21,9 @@ import java.util.List;
 
 public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     Context context;
-    List<Myxiang.RetBean.ListBean.ChildListBean>  mDatas;
+    List<Myhome.RetBean.ListBean.ChildListBean>  mDatas;
 
-    public ZhiAdapter(List<Myxiang.RetBean.ListBean.ChildListBean> mdatas, Context context) {
+    public ZhiAdapter(List<Myhome.RetBean.ListBean.ChildListBean> mdatas, Context context) {
         this.mDatas = mdatas;
         this.context = context;
     }
@@ -53,6 +54,7 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
         holder.tv.setText(mDatas.get(position).getTitle());
+
         ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
 
         if (mOnItemClickLitener != null) {
@@ -86,7 +88,7 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     {
 
         TextView tv;
-        ImageView sim;
+        SimpleDraweeView sim;
         public MyViewHolder(View view)
         {
             super(view);

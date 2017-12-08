@@ -20,9 +20,9 @@ import java.util.List;
 
 public class TwoAdapter extends RecyclerView.Adapter<TwoAdapter.MyViewHolder>{
     Context context;
-    List<Myhome.RetBean.ListBean.ChildListBean> mDatas;
+    List<Myhome.RetBean.ListBean> mDatas;
 
-    public TwoAdapter(List<Myhome.RetBean.ListBean.ChildListBean> mdatas, Context context) {
+    public TwoAdapter(List<Myhome.RetBean.ListBean> mdatas, Context context) {
         this.mDatas = mdatas;
         this.context = context;
     }
@@ -53,7 +53,8 @@ public class TwoAdapter extends RecyclerView.Adapter<TwoAdapter.MyViewHolder>{
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
         holder.tv.setText(mDatas.get(position).getTitle());
-        ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
+        holder.sim.setImageURI(mDatas.get(position).getChildList().get(0).getPic());
+        //ImageLoader.getInstance().displayImage(mDatas.get(position).getChildList().get(0).getPic(),holder.sim);
        /* holder.sim.setImageURI(mDatas.get(position).getPic());
         //创建DraweeController
         DraweeController controller = Fresco.newDraweeControllerBuilder()
@@ -100,12 +101,12 @@ public class TwoAdapter extends RecyclerView.Adapter<TwoAdapter.MyViewHolder>{
     {
 
         TextView tv;
-        ImageView sim;
+        SimpleDraweeView sim;
         public MyViewHolder(View view)
         {
             super(view);
             sim=view.findViewById(R.id.swpp);
-            tv = (TextView) view.findViewById(R.id.bujute);
+            tv =  view.findViewById(R.id.bujute);
         }
     }
 }
