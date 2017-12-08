@@ -13,6 +13,12 @@ android {
                 includeCompileClasspath = true
             }
         }
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']  /**在libs文件夹下找so文件*/
+            }
+        }
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -27,6 +33,13 @@ android {
         }
     }
 }
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs' /**在libs文件夹下找aar文件*/
+    }
+}
+
 
 dependencies {
 
