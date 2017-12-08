@@ -2,18 +2,15 @@ package com.vip.movie.header.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.vip.movie.R;
 import com.vip.movie.header.bean.Home;
 
-import java.io.LineNumberInputStream;
 import java.util.List;
 
 /**
@@ -40,7 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.iv.setImageURI(list.get(4).getChildList().get(position).getPic());
+       holder.iv.setImageURI(list.get(4).getChildList().get(position).getPic());
         holder.tv.setText(list.get(4).getChildList().get(position).getTitle());
 
         if(onItemClieckLinster != null){
@@ -85,7 +82,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        private final SimpleDraweeView iv;
+       private final SimpleDraweeView iv;
         private final TextView tv;
 
         public ViewHolder(View itemView) {

@@ -31,10 +31,10 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        </activity>
+
         <activity android:name=".activitys.DetailsActivity"></activity>
         <activity android:name=".activitys.DetailsTwoActivity"></activity>
-        <activity android:name=".thematic.Zhuantifenlei"></activity
+        <activity android:name=".thematic.Zhuantifenlei"></activity>
         <activity android:name=".ShouchangActivity"></activity>
 
     </application>
