@@ -27,6 +27,7 @@ android {
         }
     }
 }
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -35,8 +36,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.hjm:BottomTabBar:1.1.1'
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
     //黄牛刀
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.jakewharton:butterknife-compiler:8.8.1'
@@ -63,11 +62,6 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     //eventbus
     compile 'org.greenrobot:eventbus:3.0.0'
-    implementation files('libs/SocialSDK_QQ_Simplify.jar')
-    implementation files('libs/umeng_social_api.jar')
-    implementation files('libs/umeng_social_net.jar')
-    implementation files('libs/umeng_social_tool.jar')
-    implementation files('libs/SocialSDK_Sina_Simplify.jar')
-    implementation files('libs/umeng_shareboard_widget.jar')
-    implementation files('libs/umeng_social_shareview.jar')
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
 }
