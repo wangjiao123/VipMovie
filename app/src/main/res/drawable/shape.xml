@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    android:shape="rectangle">
+    <solid android:color="#7596AA"/>
+    <corners android:radius="8px"/>
+    <stroke android:color="#32CD32"
+        android:width="2px"
+        />
+
+
+
     <!--设置背景色-->
     <solid android:color="#00ffbf" />
     <!--设置圆角-->

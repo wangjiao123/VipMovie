@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/bg"
-    >
-
+    tools:context="com.vip.movie.activitys.DetailsTwoActivity">
     <include
         layout="@layout/simple_player_view_player"
         android:layout_width="match_parent"

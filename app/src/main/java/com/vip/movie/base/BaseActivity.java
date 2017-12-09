@@ -169,7 +169,7 @@ public abstract class BaseActivity extends SupportActivity {
 //            /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
 //                if (title != null) {
 //                    ViewGroup.LayoutParams lp = title.getLayoutParams();
-//                    lp.height = ScreenUtil.dip2px(this, 48);
+//                    lp.height = ScreenUtil.dip2px(t his, 48);
 //                    title.setLayoutParams(lp);
 //                    title.setPadding(0, 0, 0, 0);
 //                }
