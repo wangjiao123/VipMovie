@@ -78,7 +78,9 @@ Intent intent = getIntent();
         mAdapter.setOnItemClickLitener(new ZhiAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
+
                 Toast.makeText(Zhuantifenlei.this, "点击+" +childList.get(position).getDataId(), Toast.LENGTH_SHORT).show();
+
                 EventBus.getDefault().postSticky(new EventBusStickMessage(childList.get(position).getDataId()));
                 Intent in=new Intent(Zhuantifenlei.this, DetailsTwoActivity.class);
                 startActivity(in);
@@ -121,5 +123,6 @@ Intent intent = getIntent();
     public void onViewClicked() {
         finish();
     }
+
 
 }

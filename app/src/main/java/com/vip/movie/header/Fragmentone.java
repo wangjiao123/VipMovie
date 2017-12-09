@@ -13,14 +13,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.stx.xhb.xbanner.XBanner;
 import com.vip.movie.R;
 import com.vip.movie.activitys.DetailsTwoActivity;
+import com.vip.movie.activitys.SearchActivity;
 import com.vip.movie.base.BaseFragment;
+import com.vip.movie.found.bean.EventBusStickMessage;
 import com.vip.movie.header.adapter.MyAdapter;
 import com.vip.movie.header.bean.Home;
 import com.vip.movie.header.control.ObservableScrollView;
@@ -28,6 +32,8 @@ import com.vip.movie.header.presenter.HomePresenter;
 import com.vip.movie.header.view.HView;
 import com.vip.movie.utils.Api;
 import com.vip.movie.utils.Toasts;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +68,10 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
     Toolbar tbar;
     @BindView(R.id.swipe)
     SwipeRefreshLayout swipe;
+    @BindView(R.id.et)
+    EditText et;
+    @BindView(R.id.et_re)
+    RelativeLayout etre;
     private int height;
     private HomePresenter homePresenter;
     private MyAdapter myAdapter;
@@ -74,23 +84,23 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
         unbinder = ButterKnife.bind(this, view);
         homePresenter = new HomePresenter(this);
         homePresenter.getHome(Api.HOMEURL);
-       // initData();
         initView();
 
+        et.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toasts.showShort(getActivity() , "sdfsadfsadfasdf");
+                startActivity(new Intent(getActivity() , SearchActivity.class));
+            }
+        });
         return view;
 
     }
 
-/*    private void initData() {
-        mData = new ArrayList<String>();
-        for (int i = 0; i < 100; i++) {
-            mData.add("item" + i);
-
-        }
-    }*/
 
     private void initView() {
 
+        et.setFocusable(false);
         LinearLayoutManager linerLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(linerLayoutManager);
 
@@ -111,19 +121,21 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
                 if (y <= 0) {
                     mBiaoti.setVisibility(View.GONE);
                     tbar.setBackgroundColor(Color.argb((int) 0, 227, 29, 26));//AGB由相关工具获得，或者美工提供
+                    et.setVisibility(View.VISIBLE);
                 } else if (y > 0 && y <= height) {
                     mBiaoti.setVisibility(View.VISIBLE);
                     float scale = (float) y / height;
                     float alpha = (255 * scale);
                     // 只是layout背景透明
                     tbar.setBackgroundColor(Color.argb((int) alpha, 227, 29, 26));
+                    et.setVisibility(View.GONE);
                 } else {
                     mBiaoti.setVisibility(View.VISIBLE);
                     tbar.setBackgroundColor(Color.argb((int) 255, 227, 29, 26));
+                    etre.setVisibility(View.VISIBLE);
                 }
             }
         });
-
 
 
     }
@@ -136,7 +148,7 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
     }
 
     @Override
-    public void getHome(Home.RetBean list) {
+    public void getHome(final Home.RetBean list) {
         final List<String> images = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             images.add(list.getList().get(0).getChildList().get(i).getPic());
@@ -159,7 +171,9 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
         myAdapter.setOnItemClieckLinster(new MyAdapter.OnItemClieckLinster() {
             @Override
             public void onItemClickListener(View view, int pos) {
-                startActivity();
+                //玩去
+                EventBus.getDefault().postSticky(new EventBusStickMessage(list1.get(4).getChildList().get(pos).getDataId()));
+                startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
             }
 
             @Override
@@ -171,24 +185,27 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
         xb.setOnItemClickListener(new XBanner.OnItemClickListener() {
             @Override
             public void onItemClick(XBanner banner, int position) {
-                //跳转到详情页面
-                Toasts.showShort(getActivity() , "tangtangtangtangtang");
-                 startActivity();
+                //玩去
+                EventBus.getDefault().postSticky(new EventBusStickMessage(list.getList().get(0).getChildList().get(position).getDataId()));
+                Toasts.showShort(getActivity(), "tangtangtangtangtang");
+                startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
             }
         });
 
 
+
+
     }
 
-    private void startActivity() {
-        startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
-    }
 
     @Override
     public void onRefresh() {
         homePresenter.getHome(Api.HOMEURL);
         myAdapter.notifyDataSetChanged();
         swipe.setRefreshing(false);
-        Toasts.showShort(getActivity() , "刷新成功！");
+        Toasts.showShort(getActivity(), "刷新成功！");
     }
+
+
+
 }
