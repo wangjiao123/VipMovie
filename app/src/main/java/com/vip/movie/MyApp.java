@@ -25,6 +25,10 @@ public class MyApp extends Application {
 //456456465
 //        1231321256
 //        123132125
+
+
+//        1231211232
+//        123132125
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
         PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
@@ -82,5 +86,6 @@ public class MyApp extends Application {
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);
     }
+
 }
 
