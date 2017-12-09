@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatDelegate;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +19,13 @@ import java.util.Set;
  */
 
 public class MyApp extends Application {
+    {
+//        123132125
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
+    }
     private static Context context;
     public static Context getContext() {
         return context;
@@ -40,6 +49,7 @@ public class MyApp extends Application {
         instance=this;
         //必须初始化Fresco,不然加载不出来图片
         Fresco.initialize(this);
+        UMShareAPI.get(this);
         ImageLoaderConfiguration aDefault = ImageLoaderConfiguration.createDefault(getApplicationContext());
         ImageLoader.getInstance().init(aDefault);
     }

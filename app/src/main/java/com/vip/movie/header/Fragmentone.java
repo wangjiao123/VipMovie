@@ -171,9 +171,12 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
         myAdapter.setOnItemClieckLinster(new MyAdapter.OnItemClieckLinster() {
             @Override
             public void onItemClickListener(View view, int pos) {
-                //玩去
+
                 EventBus.getDefault().postSticky(new EventBusStickMessage(list1.get(4).getChildList().get(pos).getDataId()));
-                startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
+                Intent in=new Intent(getActivity(), DetailsTwoActivity.class);
+                startActivity(in);
+
+               
             }
 
             @Override
@@ -185,10 +188,14 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
         xb.setOnItemClickListener(new XBanner.OnItemClickListener() {
             @Override
             public void onItemClick(XBanner banner, int position) {
-                //玩去
+
+                //跳转到详情页面
+                Toasts.showShort(getActivity() , "tangtangtangtangtang");
                 EventBus.getDefault().postSticky(new EventBusStickMessage(list.getList().get(0).getChildList().get(position).getDataId()));
-                Toasts.showShort(getActivity(), "tangtangtangtangtang");
-                startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
+                Intent in=new Intent(getActivity(), DetailsTwoActivity.class);
+                startActivity(in);
+                //startActivity();
+
             }
         });
 
