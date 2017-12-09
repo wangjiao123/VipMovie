@@ -21,13 +21,17 @@ import com.stx.xhb.xbanner.XBanner;
 import com.vip.movie.R;
 import com.vip.movie.activitys.DetailsTwoActivity;
 import com.vip.movie.base.BaseFragment;
+import com.vip.movie.found.bean.EventBusStickMessage;
 import com.vip.movie.header.adapter.MyAdapter;
 import com.vip.movie.header.bean.Home;
 import com.vip.movie.header.control.ObservableScrollView;
 import com.vip.movie.header.presenter.HomePresenter;
 import com.vip.movie.header.view.HView;
+import com.vip.movie.thematic.Zhuantifenlei;
 import com.vip.movie.utils.Api;
 import com.vip.movie.utils.Toasts;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,7 +140,7 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
     }
 
     @Override
-    public void getHome(Home.RetBean list) {
+    public void getHome(final Home.RetBean list) {
         final List<String> images = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             images.add(list.getList().get(0).getChildList().get(i).getPic());
@@ -159,7 +163,9 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
         myAdapter.setOnItemClieckLinster(new MyAdapter.OnItemClieckLinster() {
             @Override
             public void onItemClickListener(View view, int pos) {
-                startActivity();
+                EventBus.getDefault().postSticky(new EventBusStickMessage(list1.get(4).getChildList().get(pos).getDataId()));
+                Intent in=new Intent(getActivity(), DetailsTwoActivity.class);
+                startActivity(in);
             }
 
             @Override
@@ -173,7 +179,10 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
             public void onItemClick(XBanner banner, int position) {
                 //跳转到详情页面
                 Toasts.showShort(getActivity() , "tangtangtangtangtang");
-                 startActivity();
+                EventBus.getDefault().postSticky(new EventBusStickMessage(list.getList().get(0).getChildList().get(position).getDataId()));
+                Intent in=new Intent(getActivity(), DetailsTwoActivity.class);
+                startActivity(in);
+                //startActivity();
             }
         });
 

@@ -52,10 +52,10 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
-        holder.tv.setText(mDatas.get(position).getTitle());
+        holder.tvt.setText(mDatas.get(position).getTitle());
 
-        ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.sim);
-
+        //.getInstance().displayImage(mDatas.get(position).getPic(),holder.si);
+        holder.si.setImageURI(mDatas.get(position).getPic());
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,13 +86,13 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     class MyViewHolder extends RecyclerView.ViewHolder
     {
 
-        TextView tv;
-        SimpleDraweeView sim;
+        TextView tvt;
+        SimpleDraweeView si;
         public MyViewHolder(View view)
         {
             super(view);
-            sim=view.findViewById(R.id.swpp);
-            tv = (TextView) view.findViewById(R.id.bujute);
+            si=view.findViewById(R.id.swpp);
+            tvt = (TextView) view.findViewById(R.id.bujute);
         }
     }
 }
