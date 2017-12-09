@@ -5,17 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vip.movie.R;
-import com.vip.movie.thematic.bean.Myxiang;
+import com.vip.movie.thematic.bean.Myhome;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,9 +20,9 @@ import java.util.List;
 
 public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     Context context;
-    List<Myxiang.RetBean.ListBean.ChildListBean>  mDatas;
+    List<Myhome.RetBean.ListBean.ChildListBean>  mDatas;
 
-    public ZhiAdapter(List<Myxiang.RetBean.ListBean.ChildListBean> mdatas, Context context) {
+    public ZhiAdapter(List<Myhome.RetBean.ListBean.ChildListBean> mdatas, Context context) {
         this.mDatas = mdatas;
         this.context = context;
     }
@@ -75,6 +71,7 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
         //设置DraweeController
         holder.sim.setController(controller);*/
 
+
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,7 +103,7 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     {
 
         TextView tv;
-        ImageView sim;
+        SimpleDraweeView sim;
         public MyViewHolder(View view)
         {
             super(view);

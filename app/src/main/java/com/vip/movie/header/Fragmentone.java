@@ -1,10 +1,10 @@
 package com.vip.movie.header;
 
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +22,9 @@ import com.bumptech.glide.Glide;
 import com.stx.xhb.xbanner.XBanner;
 import com.vip.movie.R;
 import com.vip.movie.activitys.DetailsTwoActivity;
+
 import com.vip.movie.activitys.SearchActivity;
+import com.vip.movie.base.BaseFragment;
 import com.vip.movie.header.adapter.MyAdapter;
 import com.vip.movie.header.bean.EventBusStickMessage;
 import com.vip.movie.header.bean.Home;
@@ -43,11 +45,19 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+
 /**
  * Created by Tangao on 2017/12/4.
  */
 
-public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.OnRefreshListener {
+
+public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayout.OnRefreshListener{
+
+    @Override
+    protected int getLayout() {
+        return R.layout.one;
+    }
+
     @BindView(R.id.xb)
     XBanner xb;
     @BindView(R.id.recycler)
@@ -87,6 +97,7 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
             }
         });
         return view;
+
     }
 
 

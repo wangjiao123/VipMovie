@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_blue"
+    android:background="@mipmap/bg_colorful"
     >
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -17,7 +17,6 @@
             android:id="@+id/osl"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

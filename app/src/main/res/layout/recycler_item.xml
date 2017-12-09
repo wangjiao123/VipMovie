@@ -24,6 +24,7 @@
         fresco:roundingBorderWidth="5dp"
         fresco:roundingBorderColor="#7596AA"
         fresco:viewAspectRatio="1.6"/>
+
     <TextView
         android:id="@+id/main_tv"
         android:text="唐唐唐唐唐"

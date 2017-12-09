@@ -6,8 +6,22 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
-    android:background="@color/colorAccent"
+    android:background="@mipmap/bg_colorful"
     tools:context="com.vip.movie.MainActivity">
+
+    <com.vip.movie.utils.theme.ColorRelativeLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/menuBackground">
+
+    </com.vip.movie.utils.theme.ColorRelativeLayout>
+    <com.vip.movie.utils.theme.ColorRelativeLayout
+        style="@style/both_match_style"
+        android:background="?attr/background">
+
+    </com.vip.movie.utils.theme.ColorRelativeLayout>
+
     <com.vip.movie.ResideLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,7 +56,7 @@
         android:id="@+id/radioGroup">
         <RadioButton
             android:id="@+id/shou"
-            android:text="首页"
+            android:text="精选"
             android:textSize="15dp"
             android:drawableTop="@drawable/tab_01"
             android:layout_weight="1"
@@ -54,7 +68,7 @@
         <RadioButton
             android:id="@+id/fen"
             android:drawableTop="@drawable/tab_02"
-            android:text="分类"
+            android:text="专题"
             android:textSize="15dp"
             android:textColor="@drawable/tab_text"
             android:gravity="center"
@@ -66,7 +80,7 @@
             android:id="@+id/gou"
             android:drawableTop="@drawable/tab_03"
             android:textColor="@drawable/tab_text"
-            android:text="购物车"
+            android:text="发现"
             android:textSize="15dp"
             android:gravity="center"
             android:button="@null"
@@ -76,7 +90,7 @@
         <RadioButton
             android:id="@+id/my"
             android:drawableTop="@drawable/tab_04"
-            android:text="个人"
+            android:text="我的"
             android:textSize="15dp"
             android:textColor="@drawable/tab_text"
             android:gravity="center"
@@ -85,10 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="63dp" />
     </RadioGroup>
-
         </RelativeLayout>
 </com.vip.movie.ResideLayout>
-
-
-
+Temporary merge branch 2
 </RelativeLayout>
