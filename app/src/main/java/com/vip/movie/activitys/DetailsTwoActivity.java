@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dou361.ijkplayer.widget.PlayStateParams;
 import com.dou361.ijkplayer.widget.PlayerView;
@@ -157,15 +156,15 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         setContentView(R.layout.activity_detailstwo);
         ButterKnife.bind(this);
 
-        String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
-        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
-        new PlayerView(this)
-                .setTitle("什么")
-                .setScaleType(PlayStateParams.fitparent)
-                .hideMenu(true)
-                .forbidTouch(false)
-                .setPlaySource(url)
-                .startPlay();
+//        String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
+//        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
+//        new PlayerView(this)
+//                .setTitle("什么")
+//                .setScaleType(PlayStateParams.fitparent)
+//                .hideMenu(true)
+//                .forbidTouch(false)
+//                .setPlaySource(url)
+//                .startPlay();
 
 
         EventBus.getDefault().register(this);
