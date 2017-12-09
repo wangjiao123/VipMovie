@@ -6,15 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
- 
-   <com.facebook.drawee.view.SimpleDraweeView
-    android:id="@+id/swpp"
-    android:layout_width="150dp"
-    android:layout_height="100dp"
+    <!--<ImageView
+        android:id="@+id/swpp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        />-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/swpp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         fresco:roundingBorderWidth="5dp"
-    fresco:roundingBorderColor="#737d83"
-     />
+        fresco:roundingBorderColor="#737d83"
+        />
     <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -35,6 +41,5 @@
             android:text="哈哈"
             android:textColor="@color/white"
             android:textStyle="bold" />
-
     </RelativeLayout>
 </RelativeLayout>
