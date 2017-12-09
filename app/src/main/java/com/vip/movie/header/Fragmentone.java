@@ -177,6 +177,7 @@ public class Fragmentone extends Fragment implements HView, SwipeRefreshLayout.O
         xb.setOnItemClickListener(new XBanner.OnItemClickListener() {
             @Override
             public void onItemClick(XBanner banner, int position) {
+                //玩去
                 EventBus.getDefault().postSticky(new EventBusStickMessage(list.getList().get(0).getChildList().get(position).getDataId()));
                 Toasts.showShort(getActivity(), "tangtangtangtangtang");
                 startActivity(new Intent(getActivity() , DetailsTwoActivity.class));
