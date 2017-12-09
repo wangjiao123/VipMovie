@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import com.vip.movie.R;
 import com.vip.movie.thematic.bean.Myhome;
 

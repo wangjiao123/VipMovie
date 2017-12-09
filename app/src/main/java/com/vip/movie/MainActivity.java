@@ -1,5 +1,11 @@
 package com.vip.movie;
 
+
+
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.NonNull;
+
 import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
@@ -41,6 +47,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,ColorChooserDialog.ColorCallback{
+
 
     public static final String Set_Theme_Color = "Set_Theme_Color";
     @BindView(R.id.shou)
