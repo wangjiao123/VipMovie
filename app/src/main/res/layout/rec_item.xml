@@ -10,7 +10,7 @@
         android:id="@+id/my_image_view"
         android:layout_width="130dp"
         android:layout_height="150dp"
-        fresco:placeholderImage="@mipmap/ic_launcher"
+
         />
     <TextView
         android:layout_width="130dp"

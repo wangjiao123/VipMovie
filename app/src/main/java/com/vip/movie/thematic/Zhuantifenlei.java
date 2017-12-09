@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.vip.movie.R;
 import com.vip.movie.activitys.DetailsTwoActivity;
+import com.vip.movie.found.bean.EventBusStickMessage;
 import com.vip.movie.thematic.apdate.ZhiAdapter;
 import com.vip.movie.thematic.bean.Myhome;
 import com.vip.movie.thematic.bean.Myxiang;
@@ -77,7 +78,7 @@ Intent intent = getIntent();
         mAdapter.setOnItemClickLitener(new ZhiAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(Zhuantifenlei.this, "点击+" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Zhuantifenlei.this, "点击+" +childList.get(position).getDataId(), Toast.LENGTH_SHORT).show();
                 EventBus.getDefault().postSticky(new EventBusStickMessage(childList.get(position).getDataId()));
                 Intent in=new Intent(Zhuantifenlei.this, DetailsTwoActivity.class);
                 startActivity(in);
@@ -119,12 +120,6 @@ Intent intent = getIntent();
     @OnClick(R.id.fanhui)
     public void onViewClicked() {
         finish();
-    }
-    public class EventBusStickMessage {
-        public  String Message;
-        public  EventBusStickMessage(String message){
-            Message =message;
-        }
     }
 
 }

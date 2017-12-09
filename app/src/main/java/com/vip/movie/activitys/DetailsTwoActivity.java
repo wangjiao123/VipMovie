@@ -13,10 +13,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dou361.ijkplayer.widget.IjkVideoView;
 import com.dou361.ijkplayer.widget.PlayStateParams;
 import com.dou361.ijkplayer.widget.PlayerView;
+import com.vip.movie.MyApp;
 import com.vip.movie.R;
 import com.vip.movie.adapters.HomeAdapter;
 import com.vip.movie.details.bean.DetailsBean;
@@ -168,6 +170,7 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void receiveMessage(EventBusStickMessage eventBusStickMessage) {
         mediaid=eventBusStickMessage.Message;
+        Toast.makeText(MyApp.getContext(),"mediaid"+mediaid,Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -219,6 +222,7 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         des = data.getRet().getDescription();
         title = data.getRet().getTitle();
         mData.add(data);
+
 
         new PlayerView(this)
                 .setTitle(data.getRet().getTitle())
