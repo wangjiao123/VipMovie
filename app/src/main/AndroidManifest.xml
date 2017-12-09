@@ -40,7 +40,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activitys.DetailsActivity" />
         <activity android:name=".activitys.DetailsTwoActivity" />
         <activity android:name=".activitys.SearchActivity"></activity>
 

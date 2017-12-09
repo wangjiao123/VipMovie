@@ -15,7 +15,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dou361.ijkplayer.widget.IjkVideoView;
 import com.dou361.ijkplayer.widget.PlayStateParams;
 import com.dou361.ijkplayer.widget.PlayerView;
 import com.vip.movie.R;
@@ -39,8 +38,7 @@ import butterknife.ButterKnife;
 public class DetailsTwoActivity extends AppCompatActivity implements Details_view{
 
 
-    @BindView(R.id.video_view)
-    IjkVideoView videoView;
+
     @BindView(R.id.iv_trumb)
     ImageView ivTrumb;
     @BindView(R.id.ll_bg)
@@ -158,9 +156,6 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailstwo);
         ButterKnife.bind(this);
-
-View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_view_player, null);
-        setContentView(rootView);
 
         String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
         Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();

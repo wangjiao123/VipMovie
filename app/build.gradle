@@ -13,6 +13,7 @@ android {
                 includeCompileClasspath = true
             }
         }
+
         sourceSets {
             main {
                 jniLibs.srcDirs = ['libs']  /**在libs文件夹下找so文件*/

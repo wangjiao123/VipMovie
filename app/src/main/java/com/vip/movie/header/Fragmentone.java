@@ -22,18 +22,14 @@ import com.bumptech.glide.Glide;
 import com.stx.xhb.xbanner.XBanner;
 import com.vip.movie.R;
 import com.vip.movie.activitys.DetailsTwoActivity;
-
 import com.vip.movie.activitys.SearchActivity;
 import com.vip.movie.base.BaseFragment;
 import com.vip.movie.found.bean.EventBusStickMessage;
 import com.vip.movie.header.adapter.MyAdapter;
-import com.vip.movie.header.bean.EventBusStickMessage;
 import com.vip.movie.header.bean.Home;
-
 import com.vip.movie.header.control.ObservableScrollView;
 import com.vip.movie.header.presenter.HomePresenter;
 import com.vip.movie.header.view.HView;
-import com.vip.movie.thematic.Zhuantifenlei;
 import com.vip.movie.utils.Api;
 import com.vip.movie.utils.Toasts;
 
@@ -44,7 +40,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
