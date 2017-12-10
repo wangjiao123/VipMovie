@@ -11,5 +11,6 @@ public class Api {
 
     public static final String Card_User="http://api.svipmovie.com/front/";
     public static  final  String HOMEURL  ="http://api.svipmovie.com/";
+    public static  final  String SEACHURL  ="http://api.svipmovie.com/";
 
 }

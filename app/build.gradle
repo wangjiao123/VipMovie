@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -37,6 +37,11 @@ android {
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
+    }
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.vip.movie.greendao.gen'
+        targetGenDir 'src/main/java'
     }
 }
 repositories {
@@ -128,4 +133,6 @@ dependencies {
     //color
     compile 'com.afollestad.material-dialogs:core:0.9.1.0'
     compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
+    //GreenDao
+    compile 'org.greenrobot:greendao:3.2.0'
 }

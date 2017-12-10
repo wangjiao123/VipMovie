@@ -1,8 +1,10 @@
 package com.vip.movie;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,9 +41,10 @@ import org.simple.eventbus.Subscriber;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener,ColorChooserDialog.ColorCallback{
+public class MainActivity extends BaseActivity implements View.OnClickListener, ColorChooserDialog.ColorCallback {
 
     public static final String Set_Theme_Color = "Set_Theme_Color";
     @BindView(R.id.shou)
@@ -53,7 +57,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
     RadioButton my;
     @BindView(R.id.fl)
     FrameLayout fl;
-    FragmentManager fm;
     @BindView(R.id.Ilike)
     TextView Ilike;
     @BindView(R.id.myload)
@@ -72,16 +75,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
     TextView title;
     @BindView(R.id.qqhead)
     SimpleDraweeView sdv;
+    @BindView(R.id.layout1)
+    RelativeLayout layout1;
     private Fragmentone one;
     private Fragmenttwo two;
     private Fragmentthree three;
     private Framgmentfour four;
     private UMAuthListener umAuthListener;
     String iconurl;
+FragmentManager fm;
     @Override
     protected int getLayout() {
         return R.layout.activity_main;
     }
+
     @Override
     protected void initView() {
         EventBus.getDefault().register(this);
@@ -112,9 +119,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         }
-        if(Build.VERSION.SDK_INT>=23){
-            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS};
-            ActivityCompat.requestPermissions(this,mPermissionList,123);
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
+            ActivityCompat.requestPermissions(this, mPermissionList, 123);
         }
         //                ToastUtil.showLong(LoginActivity.this , "登录成功"+map.get("name"));
         /*//设置QQ头像
@@ -129,9 +136,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
 
             @Override
             public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-                System.out.println("uid========"+map.get("uid"));
-                System.out.println("name========"+map.get("name"));
-                System.out.println("iconurl========"+map.get("iconurl"));
+                System.out.println("uid========" + map.get("uid"));
+                System.out.println("name========" + map.get("name"));
+                System.out.println("iconurl========" + map.get("iconurl"));
 //                ToastUtil.showLong(LoginActivity.this , "登录成功"+map.get("name"));
             /*//设置QQ头像
 
@@ -156,14 +163,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
 
     @Subscriber(tag = Framgmentfour.SET_THEME)
     public void setTheme(String content) {
+        fm=getSupportFragmentManager();
         new ColorChooserDialog.Builder(this, R.string.theme)
                 .customColors(R.array.colors, null)
                 .doneButton(R.string.done)
                 .cancelButton(R.string.cancel)
                 .allowUserColorInput(false)
                 .allowUserColorInputAlpha(false)
-                .show(this);
+                .show(fm);
     }
+
     UMShareListener shareListener = new UMShareListener() {
         /**
          * @descrption 分享开始的回调
@@ -180,7 +189,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
          */
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            Toast.makeText(MainActivity.this,"成功了",Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "成功了", Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -190,7 +199,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
          */
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(MainActivity.this,"失败"+t.getMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "失败" + t.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -199,10 +208,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
          */
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(MainActivity.this,"取消了",Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "取消了", Toast.LENGTH_LONG).show();
 
         }
     };
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -250,16 +260,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
                 my.setCompoundDrawablesRelativeWithIntrinsicBounds(null, ContextCompat.getDrawable(this, R.mipmap.my_select), null, null);
                 my.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
                 break;
-            case  R.id.qqhead:
-                Toast.makeText(MainActivity.this,"登录",Toast.LENGTH_SHORT);
+            case R.id.qqhead:
+                Toast.makeText(MainActivity.this, "登录", Toast.LENGTH_SHORT);
                 break;
         }
     }
+
+    @SuppressLint("ResourceType")
     @Override
     public void onColorSelection(@NonNull ColorChooserDialog dialog, int selectedColor) {
         ThemeUtil.onColorSelection(this, dialog, selectedColor);
 //        EventBus.getDefault().post("",Set_Theme_Color);
-        EventBus.getDefault().post("",Set_Theme_Color);
+//        EventBus.getDefault().post("",Set_Theme_Color);
+        layout1.setBackgroundColor(selectedColor);
     }
 
     @Override
@@ -267,7 +280,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
 
     }
 
-    @OnClick({R.id.Ilike, R.id.myload, R.id.fuli, R.id.share, R.id.talk, R.id.setting, R.id.about, R.id.title,R.id.qqhead})
+    @OnClick({R.id.Ilike, R.id.myload, R.id.fuli, R.id.share, R.id.talk, R.id.setting, R.id.about, R.id.title, R.id.qqhead})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Ilike:
@@ -288,7 +301,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
                 new ShareAction(MainActivity.this)
                         .withMedia(web)
 //                        .withText("http://blog.csdn.net/Little_xiaobai/article/details/78613674")
-                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
+                        .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
                         .setCallback(shareListener)
                         .open();
                 break;
@@ -299,19 +312,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,C
             case R.id.about:
                 break;
             case R.id.title:
+                setTheme();
                 break;
             case R.id.qqhead:
-                Toast.makeText(MainActivity.this,"登录",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "登录", Toast.LENGTH_LONG).show();
                 AbstractDraweeController build = Fresco.newDraweeControllerBuilder().setUri(iconurl).build();
                 sdv.setController(build);
-                UMShareAPI.get(MainActivity.this).getPlatformInfo(MainActivity.this, SHARE_MEDIA.QQ,umAuthListener);
+                UMShareAPI.get(MainActivity.this).getPlatformInfo(MainActivity.this, SHARE_MEDIA.QQ, umAuthListener);
                 break;
         }
+    }
+
+    public void setTheme() {
+        new ColorChooserDialog.Builder(this, R.string.my_them)
+                .customColors(R.array.colors, null)
+                .doneButton(R.string.done)
+                .cancelButton(R.string.cancel)
+                .allowUserColorInput(false)
+                .allowUserColorInputAlpha(false)
+               .show(fm);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }
