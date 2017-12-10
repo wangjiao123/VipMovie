@@ -1,5 +1,7 @@
 package com.vip.movie.details.model;
 
+import android.util.Log;
+
 import com.vip.movie.details.bean.DetailsBean;
 import com.vip.movie.utils.Api;
 import com.vip.movie.utils.ApiServer;
@@ -32,10 +34,12 @@ public class MyDetailsmodel implements Details_model {
     public void detailsdata(String url, String mediaId) {
         Map map=new HashMap<String,String>();
         map.put("mediaId",mediaId);
-
+        Log.d("mediaId", "detailsdata: "+mediaId);
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.Card_User).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build();
         ApiServer apiser = retrofit.create(ApiServer.class);
         Observable<DetailsBean> gethom = apiser.getdetails("videoDetailApi/videoDetail.do",map);
+        Log.d("mediaId", Api.Card_User+"videoDetailApi/videoDetail.do");
+
         gethom.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<DetailsBean>() {
@@ -46,7 +50,7 @@ public class MyDetailsmodel implements Details_model {
 
                     @Override
                     public void onError(Throwable e) {
-//                        Log.d("88888888888888","错误了,错误了,错误率");
+                        Log.d("88888888888888","错误了,错误了,错误率");
 //                        Toast.makeText(MyApp.getContext(),"111111111",Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }

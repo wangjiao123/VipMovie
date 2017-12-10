@@ -1,5 +1,11 @@
 package com.vip.movie;
 
+
+
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.NonNull;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,16 +23,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.AbstractDraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMWeb;
+import com.vip.movie.activitys.SettingsActivity;
 import com.vip.movie.base.BaseActivity;
 import com.vip.movie.found.Fragmentthree;
 import com.vip.movie.fuli.View.fuliActivity;
@@ -34,6 +43,7 @@ import com.vip.movie.header.Fragmentone;
 import com.vip.movie.me.Framgmentfour;
 import com.vip.movie.thematic.Fragmenttwo;
 import com.vip.movie.utils.theme.ThemeUtil;
+import com.vip.movie.utils.theme.ThemeUtils;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -45,6 +55,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, ColorChooserDialog.ColorCallback {
+
 
     public static final String Set_Theme_Color = "Set_Theme_Color";
     @BindView(R.id.shou)
@@ -308,11 +319,29 @@ FragmentManager fm;
             case R.id.talk:
                 break;
             case R.id.setting:
+                Intent i=new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(i);
                 break;
             case R.id.about:
+                new MaterialDialog.Builder(this)
+                        .title(R.string.about)
+                        .titleColor(ThemeUtils.getThemeColor(this, R.attr.colorPrimary))
+                        .icon(new IconicsDrawable(this)
+                                .color(ThemeUtils.getThemeColor(this, R.attr.colorPrimary))
+
+                                .sizeDp(20))
+                        .content(R.string.about_me)
+                        .contentColor(ThemeUtils.getThemeColor(this, R.attr.colorPrimary))
+                        .positiveText(R.string.close)
+                        .show();
                 break;
             case R.id.title:
+
                 setTheme();
+
+                Toast.makeText(MainActivity.this, "主题", Toast.LENGTH_LONG).show();
+                EventBus.getDefault().post("", Framgmentfour.SET_THEME);
+
                 break;
             case R.id.qqhead:
                 Toast.makeText(MainActivity.this, "登录", Toast.LENGTH_LONG).show();

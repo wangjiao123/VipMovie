@@ -36,5 +36,7 @@ public interface ApiServer {
         @GET("front/homePageApi/homePage.do")
         Observable<Home> getHome();
 //front/searchKeyWordApi/getVideoListByKeyWord.do
+//@POST
+//Observable<DetailsBean> getdetails(@Url String url, @QueryMap Map<String, String> map);
 
 }
