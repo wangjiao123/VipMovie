@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -37,11 +37,6 @@ android {
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
-    }
-    greendao {
-        schemaVersion 1
-        daoPackage 'com.vip.movie.greendao.gen'
-        targetGenDir 'src/main/java'
     }
 }
 repositories {
