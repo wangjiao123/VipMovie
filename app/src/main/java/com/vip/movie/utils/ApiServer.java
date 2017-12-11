@@ -2,6 +2,9 @@ package com.vip.movie.utils;
 
 
 
+
+import com.vip.movie.bean.PinlunBean;
+
 import com.vip.movie.details.bean.DetailsBean;
 import com.vip.movie.found.bean.CardBean;
 import com.vip.movie.fuli.Bean.Women;
@@ -33,6 +36,9 @@ public interface ApiServer {
     //详情请求
     @POST
     Observable<DetailsBean> getdetails(@Url String url, @QueryMap Map<String, String> map);
+    //评论请求
+    @POST
+    Observable<PinlunBean> getpinlun(@Url String url, @QueryMap Map<String, String> map);
         //主页
         @GET("front/homePageApi/homePage.do")
         Observable<Home> getHome();

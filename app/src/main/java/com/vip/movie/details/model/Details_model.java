@@ -6,4 +6,5 @@ package com.vip.movie.details.model;
 
 public interface Details_model {
     void detailsdata(String url,String mediaId);
+    void detailsdatapinlun(String url,String mediaId);
 }

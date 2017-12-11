@@ -97,9 +97,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     //eventbus
-
     compile 'org.greenrobot:eventbus:3.0.0'
-
     //ijkplayer
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
     compile 'me.yokeyword:fragmentation:0.7.7'
@@ -115,13 +113,18 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.6.0'
     compile 'com.afollestad.material-dialogs:commons:0.9.6.0'
     compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:percent:26.1.0'
     compile 'com.mikepenz:iconics-core:2.8.2@aar'
     implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    implementation files('libs/gradle-wrapper.jar')
+
 
     compile 'com.afollestad.material-dialogs:core:0.9.1.0'
     compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
 
     //GreenDao
     compile 'org.greenrobot:greendao:3.2.0'
+
 
 }

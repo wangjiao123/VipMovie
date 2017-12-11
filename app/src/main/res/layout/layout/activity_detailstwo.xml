@@ -5,15 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/bg_blue"
-
-    >
-
-    <com.vip.movie.bean.LikeButtonView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/dark_black"
-        android:layout_gravity="center"/>
+    android:background="@mipmap/bg"
+    tools:context="com.vip.movie.activitys.DetailsTwoActivity">
     <include
         layout="@layout/simple_player_view_player"
         android:layout_width="match_parent"
@@ -39,12 +32,12 @@
         android:overScrollMode="never"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/ll_sc_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        </FrameLayout>
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
