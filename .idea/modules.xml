@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/VipMovie.iml" filepath="$PROJECT_DIR$/VipMovie.iml" />
+      <module fileurl="file://D:\daima3\VipMovie\VipMovie.iml" filepath="D:\daima3\VipMovie\VipMovie.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\daima3\VipMovie\app\app.iml" filepath="D:\daima3\VipMovie\app\app.iml" />
     </modules>
   </component>
 </project>

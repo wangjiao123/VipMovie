@@ -2,10 +2,10 @@ package com.vip.movie.activitys;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,13 +15,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dou361.ijkplayer.widget.IjkVideoView;
 import com.dou361.ijkplayer.widget.PlayStateParams;
 import com.dou361.ijkplayer.widget.PlayerView;
 import com.vip.movie.MyApp;
 import com.vip.movie.R;
 import com.vip.movie.adapters.HomeAdapter;
+import com.vip.movie.adapters.PinlunAdapter;
+import com.vip.movie.bean.PinlunBean;
 import com.vip.movie.details.bean.DetailsBean;
+import com.vip.movie.details.fragments.JianFragment;
+import com.vip.movie.details.fragments.PinFragment;
 import com.vip.movie.details.presenter.MyDeatilspresenter;
 import com.vip.movie.details.view.Details_view;
 import com.vip.movie.found.bean.EventBusStickMessage;
@@ -37,11 +40,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailsTwoActivity extends AppCompatActivity implements Details_view{
+public class DetailsTwoActivity extends FragmentActivity implements Details_view {
 
 
-    @BindView(R.id.video_view)
-    IjkVideoView videoView;
     @BindView(R.id.iv_trumb)
     ImageView ivTrumb;
     @BindView(R.id.ll_bg)
@@ -141,18 +142,24 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
     @BindView(R.id.ll_sc_content)
-    LinearLayout layout;
-
+    FrameLayout layout;
 
 
 
     private List<DetailsBean> mData;
+    List<PinlunBean.RetBean.ListBean> list;
     HomeAdapter mAdapter;
-    String mediaid="";
+    PinlunAdapter pinlunAdapter;
+    String mediaid = "";
     MyDeatilspresenter mypre;
     private String url;
     private String des;
     private String title;
+    FragmentManager manager;
+    List<Fragment> frag;
+    JianFragment jf;
+    PinFragment pf;
+    private PlayerView p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,33 +167,26 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         setContentView(R.layout.activity_detailstwo);
         ButterKnife.bind(this);
 
-View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_view_player, null);
-        setContentView(rootView);
-
-        String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
-        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
-        new PlayerView(this)
-                .setTitle("什么")
-                .setScaleType(PlayStateParams.fitparent)
-                .hideMenu(true)
-                .forbidTouch(false)
-                .setPlaySource(url)
-                .startPlay();
-
-
         EventBus.getDefault().register(this);
-        mypre=new MyDeatilspresenter(this);
-        mypre.setdetails(Api.Card_User,mediaid);
-        mData=new ArrayList<>();
+        mypre = new MyDeatilspresenter(this);
+        mypre.setdetails(Api.Card_User, mediaid);
+        mData = new ArrayList<>();
+        list = new ArrayList<>();
         tabLayout.getBackground().setAlpha(10);
 
+
         initView();
+        jf = new JianFragment(mData);
+
 
     }
+
+
+
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void receiveMessage(EventBusStickMessage eventBusStickMessage) {
-        mediaid=eventBusStickMessage.Message;
-        Toast.makeText(MyApp.getContext(),"mediaid"+mediaid,Toast.LENGTH_SHORT).show();
+        mediaid = eventBusStickMessage.Message;
+
     }
 
     @Override
@@ -198,16 +198,31 @@ View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_vi
         super.onDestroy();
     }
 
+    public void addFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.ll_sc_content, fragment);
+        transaction.addToBackStack(null);
+        // 执行事务
+        transaction.commit();
+    }
+
 
     private void initView() {
-
-
         tabLayout.addTab(tabLayout.newTab().setText("简介"));
         tabLayout.addTab(tabLayout.newTab().setText("评论"));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                    //  这里监听tab在哪个页面
+                //  这里监听tab在哪个页面
+                if (tab.getText().equals("简介")) {
+                    mData.clear();
+                    mypre.setdetails(Api.Card_User, mediaid);
+
+                } else if (tab.getText().equals("评论")) {
+
+                    Toast.makeText(MyApp.getContext(), mediaid + "评论id", Toast.LENGTH_SHORT).show();
+                    mypre.setpinlun(Api.Card_User, mediaid);
+                }
             }
 
             @Override
@@ -230,7 +245,6 @@ View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_vi
     }
 
 
-
     @Override
     public void getdata(DetailsBean data) {
 
@@ -238,29 +252,29 @@ View rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_vi
         des = data.getRet().getDescription();
         title = data.getRet().getTitle();
         mData.add(data);
+        addFragment(jf);
 
-
-        new PlayerView(this)
+        p = new PlayerView(this)
                 .setTitle(data.getRet().getTitle())
                 .setScaleType(PlayStateParams.fitparent)
                 .hideMenu(true)
                 .forbidTouch(false)
                 .setPlaySource(url)
                 .startPlay();
-        for (int i = 0; i < mData.size(); i++) {
-            View view = View.inflate(DetailsTwoActivity.this, R.layout.item_layout, null);
-            RecyclerView idRecyclerview=view.findViewById(R.id.id_recyclerview);
-            idRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-//            Log.d("main", "setScrollViewContent: 000000000000000000000000000000000000000000000000000");
-            idRecyclerview.setAdapter(mAdapter = new HomeAdapter(DetailsTwoActivity.this, mData));
-            //动态添加 子View
-            layout.addView(view, i);
-        }
+    }
+
+    @Override
+    public void getpinlun(PinlunBean data) {
+        list = data.getRet().getList();
+        pf = new PinFragment(list);
+        // Toast.makeText(MyApp.getContext(),list+"评论数据", Toast.LENGTH_SHORT).show();
+        addFragment(pf);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         this.finish();
+        p.stopPlay();
     }
 }

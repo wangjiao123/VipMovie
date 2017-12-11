@@ -1,5 +1,6 @@
 package com.vip.movie.details.view;
 
+import com.vip.movie.bean.PinlunBean;
 import com.vip.movie.details.bean.DetailsBean;
 
 /**
@@ -8,4 +9,5 @@ import com.vip.movie.details.bean.DetailsBean;
 
 public interface Details_view {
     void  getdata(DetailsBean data);
+    void  getpinlun(PinlunBean data);
 }

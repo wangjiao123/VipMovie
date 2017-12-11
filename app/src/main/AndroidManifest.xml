@@ -30,7 +30,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        android:theme="@style/Theme.Design.Light.NoActionBar">
+
         <activity android:name=".activitys.WelcomeActivity">
         android:theme="@style/Theme.Design.Light.NoActionBar">
 
@@ -40,7 +40,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.DetailsTwoActivity" />
+
+        <activity android:name=".activitys.DetailsTwoActivity" android:theme="@style/AppTheme.Base"/>
         <activity android:name=".activitys.SearchActivity"></activity>
         <activity
             android:name=".MainActivity"
