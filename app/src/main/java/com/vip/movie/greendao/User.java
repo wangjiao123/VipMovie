@@ -5,11 +5,18 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
+
+ * Created by chentong on 2017/12/9.
+ */
+@Entity
+public class User {
+
  * Created by wangjiao on 2017/12/10.
  */
 @Entity
 public class User {
     //一直可添加
+
     @Id(autoincrement = true)
     private Long id;
     private int type;
@@ -57,5 +64,7 @@ public class User {
     public void setVideo(String video) {
         this.video = video;
     }
+
+
 
 }

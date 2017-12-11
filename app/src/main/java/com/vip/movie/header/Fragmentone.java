@@ -26,6 +26,9 @@ import com.vip.movie.activitys.SearchActivity;
 import com.vip.movie.base.BaseFragment;
 import com.vip.movie.found.bean.EventBusStickMessage;
 import com.vip.movie.header.adapter.MyAdapter;
+
+
+
 import com.vip.movie.header.bean.Home;
 import com.vip.movie.header.control.ObservableScrollView;
 import com.vip.movie.header.presenter.HomePresenter;

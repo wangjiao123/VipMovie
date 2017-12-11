@@ -9,10 +9,14 @@ import android.support.v7.app.AppCompatDelegate;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import com.vip.movie.utils.GreenDaoManager;
+=======
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.vip.movie.greendao.gen.DaoMaster;
 import com.vip.movie.greendao.gen.DaoSession;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +26,7 @@ import java.util.Set;
  */
 
 public class MyApp extends Application {
+
     private DaoMaster.DevOpenHelper mHelper;
     private SQLiteDatabase db;
     private DaoMaster mDaoMaster;
@@ -36,6 +41,7 @@ public class MyApp extends Application {
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
         PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
     }
+
     private static Context context;
     public static Context getContext() {
         return context;
@@ -55,8 +61,10 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context = this;
+        context = this.getApplicationContext();
         instance=this;
+        //初始化GreenDaoManager
+        GreenDaoManager.getInstance();
         //必须初始化Fresco,不然加载不出来图片
         Fresco.initialize(this);
         UMShareAPI.get(this);
