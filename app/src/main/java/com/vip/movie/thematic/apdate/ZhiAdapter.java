@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vip.movie.R;
 import com.vip.movie.thematic.bean.Myhome;
 
@@ -56,6 +55,7 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
         holder.tvt.setText(mDatas.get(position).getTitle());
 
 
+
         ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.si);
        /* //创建DraweeController
         DraweeController controller = Fresco.newDraweeControllerBuilder()
@@ -74,6 +74,9 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
 
 
         //.getInstance().displayImage(mDatas.get(position).getPic(),holder.si);
+
+
+ 
         holder.si.setImageURI(mDatas.get(position).getPic());
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {

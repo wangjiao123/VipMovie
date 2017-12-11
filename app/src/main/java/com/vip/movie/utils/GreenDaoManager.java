@@ -60,7 +60,11 @@ public class GreenDaoManager {
 
     //数据库添加方法
     public void insert(int type, String name, String pic, String video) {
+ 
         this.getUserDao().insert(new User(null,type,name, pic, video));
+
+        this.getUserDao().insert(new User(null, type,name, pic, video));
+ 
     }
     public void insert(User bean) {
         this.getUserDao().insert(bean);
@@ -97,6 +101,7 @@ public class GreenDaoManager {
         }
         return arr;
     }
+ 
     //数据库查找是否重复
     public boolean isrepetition(String mediaid,int type){
         List<User> list = this.getUserDao().loadAll();
@@ -108,4 +113,6 @@ public class GreenDaoManager {
         }
         return false;
     }
+
+ 
 }

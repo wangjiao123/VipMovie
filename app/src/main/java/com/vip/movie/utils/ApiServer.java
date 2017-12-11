@@ -2,20 +2,20 @@ package com.vip.movie.utils;
 
 
 
-import com.vip.movie.fuli.Bean.Women;
 
-import retrofit2.http.GET;
+import com.vip.movie.bean.PinlunBean;
 
 import com.vip.movie.details.bean.DetailsBean;
 import com.vip.movie.found.bean.CardBean;
+import com.vip.movie.fuli.Bean.Women;
 import com.vip.movie.header.bean.Home;
+import com.vip.movie.search.sbean.SearchBean;
 
 import java.util.Map;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
-
 import retrofit2.http.Url;
 import rx.Observable;
 
@@ -36,9 +36,16 @@ public interface ApiServer {
     //详情请求
     @POST
     Observable<DetailsBean> getdetails(@Url String url, @QueryMap Map<String, String> map);
+    //评论请求
+    @POST
+    Observable<PinlunBean> getpinlun(@Url String url, @QueryMap Map<String, String> map);
         //主页
         @GET("front/homePageApi/homePage.do")
         Observable<Home> getHome();
 
+    //front/searchKeyWordApi/getVideoListByKeyWord.do
+    @POST
+    //搜索
+    Observable<SearchBean> getSearch(@Url String url, @QueryMap Map<String, String> map);
 
 }

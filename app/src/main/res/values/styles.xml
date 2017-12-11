@@ -8,11 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+       <item name="android:windowNoTitle">true</item>
+        <!-- 使用 API Level 22 編譯的話，要拿掉前綴字 -->
+        <item name="windowNoTitle">true</item>
+    </style>
 
     <style name="ActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>
     </style>
+
 
 
     <style name="both_wrap_style">
