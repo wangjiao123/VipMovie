@@ -12,9 +12,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.vip.movie.R;
 import com.vip.movie.activitys.SettingsActivity;
 import com.vip.movie.base.BaseFragment;
+import com.vip.movie.utils.StringUtils;
 import com.vip.movie.utils.theme.ColorTextView;
 
 import org.simple.eventbus.EventBus;
@@ -59,10 +61,10 @@ public class Framgmentfour extends BaseFragment {
         ((AppCompatActivity) getContext()).setSupportActionBar(toolbar);
         toolbar.setTitle("");
         titleName.setText(getResources().getString(R.string.mine_title));
-        /*StringUtils.setIconDrawable(mContext, mTvHistory, MaterialDesignIconic.Icon.gmi_account_calendar, 16, 15);
+        StringUtils.setIconDrawable(mContext, tvHistory, MaterialDesignIconic.Icon.gmi_account_calendar, 16, 15);
         StringUtils.setIconDrawable(mContext, tvDown, MaterialDesignIconic.Icon.gmi_time_countdown, 16, 15);
         StringUtils.setIconDrawable(mContext, tvCollection, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 15);
-        StringUtils.setIconDrawable(mContext, tvThem, MaterialDesignIconic.Icon.gmi_palette, 16, 15);*/
+        StringUtils.setIconDrawable(mContext, tvThem, MaterialDesignIconic.Icon.gmi_palette, 16, 15);
     }
 
     @OnClick(R.id.rl_them)

@@ -34,6 +34,11 @@ android {
     defaultConfig {
         multiDexEnabled true
     }
+    sourceSets{
+        main{
+            jniLibs.srcDirs=['libs']
+        }
+    }
 }
 repositories {
     mavenCentral()
@@ -45,7 +50,6 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     //noinspection GradleCompatible
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
@@ -111,5 +115,7 @@ dependencies {
     compile 'com.afollestad.material-dialogs:commons:0.9.6.0'
     compile 'com.android.support:design:26.1.0'
     compile 'com.mikepenz:iconics-core:2.8.2@aar'
+    compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
     implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation files('libs/bdasr_V3_20170929_c8984af.jar')
 }
