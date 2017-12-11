@@ -155,8 +155,6 @@ public class Fragmentthree extends BaseFragment implements Found_view {
 
 //        recyclerView.setAdapter(new MyAdapter(list,MyApp.getContext()));
         recyclerView.getAdapter().notifyDataSetChanged();
-
-
     }
 
     @OnClick(R.id.huan_btn)

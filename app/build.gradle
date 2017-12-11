@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -8,11 +8,17 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+
+
+
+        flavorDimensions "versionCode"
+
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
             }
         }
+
         sourceSets {
             main {
                 jniLibs.srcDirs = ['libs']  /**在libs文件夹下找so文件*/
@@ -33,6 +39,26 @@ android {
     }
     defaultConfig {
         multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+    }
+
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.vip.movie.greendao.gen'
+        targetGenDir 'src/main/java'
+
+
+    productFlavors {
+
+        qh360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qh360"]
+        }
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+
     }
     sourceSets{
         main{
@@ -67,7 +93,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     //bananer
     compile 'com.youth.banner:banner:1.4.9'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
     //retrofit+Rxjava
     compile 'com.squareup.retrofit2:retrofit:2.0.1'
     compile 'com.squareup.retrofit2:converter-gson:2.0.1'
@@ -76,9 +101,8 @@ dependencies {
     //recyclerview
     compile 'com.android.support:design:26.1.0'
     //Fresco
-    compile 'com.facebook.fresco:fresco:0.11.0'
-    // 其他依赖
-    compile 'com.facebook.fresco:fresco:0.12.0'
+    compile 'com.facebook.fresco:fresco:0.14.0'
+
     //Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:1.0.6'
@@ -101,6 +125,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     //eventbus
+    compile 'org.greenrobot:eventbus:3.0.0'
     //ijkplayer
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
     compile 'me.yokeyword:fragmentation:0.7.7'
@@ -110,12 +135,29 @@ dependencies {
     compile 'com.orhanobut:logger:2.1.1'
     compile 'com.makeramen:roundedimageview:2.3.0'
     compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'org.simple:androideventbus:1.0.5.1'
     compile 'com.afollestad.material-dialogs:core:0.9.6.0'
     compile 'com.afollestad.material-dialogs:commons:0.9.6.0'
     compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:percent:26.1.0'
     compile 'com.mikepenz:iconics-core:2.8.2@aar'
     compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
     implementation 'com.android.support:appcompat-v7:26.1.0'
+
     implementation files('libs/bdasr_V3_20170929_c8984af.jar')
+
+
+    implementation files('libs/gradle-wrapper.jar')
+
+
+    compile 'com.afollestad.material-dialogs:core:0.9.1.0'
+    compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
+
+    //GreenDao
+    compile 'org.greenrobot:greendao:3.2.0'
+
+
+    }
 }

@@ -6,16 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-    <ImageView
+    <!--<ImageView
         android:id="@+id/swpp"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        />-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/swpp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        fresco:roundingBorderWidth="5dp"
+        fresco:roundingBorderColor="#737d83"
         />
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -24,14 +30,16 @@
         android:background="@color/black_translucent"
         android:gravity="center"
         android:paddingTop="3dp">
-    <TextView
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:id="@+id/bujute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/swpp"
-        android:layout_centerHorizontal="true"
-        android:text="哈哈" />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/bujute"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="哈哈"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </RelativeLayout>

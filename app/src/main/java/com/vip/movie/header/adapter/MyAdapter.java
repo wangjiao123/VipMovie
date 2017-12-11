@@ -41,7 +41,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.tv.setText(list.get(4).getChildList().get(position).getTitle());
 
         if(onItemClieckLinster != null){
-
             //onitemclicklistener
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -49,7 +48,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                     onItemClieckLinster.onItemClickListener(holder.itemView , position);
                 }
             });
-
             //onitemlongclicklistener
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

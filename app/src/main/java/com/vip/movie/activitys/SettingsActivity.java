@@ -2,6 +2,8 @@ package com.vip.movie.activitys;
 
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -25,6 +27,7 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.vip.movie.R;
 import com.vip.movie.base.BaseActivity;
+import com.vip.movie.utils.CacheDataManager;
 import com.vip.movie.utils.theme.ColorTextView;
 import com.vip.movie.utils.theme.EventUtil;
 import com.vip.movie.utils.theme.ThemeUtils;
@@ -52,14 +55,51 @@ public class SettingsActivity extends BaseActivity implements EventListener  {
     TextView tvCache;
     @BindView(R.id.title_name)
     ColorTextView titleName;
+
     EditText et_input;
     private boolean enableOffline = true;
     private boolean logTime = true;
     private EventManager asr;
 
+    private Handler handler = new Handler() {
+
+
+        public void handleMessage(Message msg) {
+
+            switch (msg.what) {
+
+                case 0:
+
+                    Toast.makeText(SettingsActivity.this, "清理完成", Toast.LENGTH_SHORT).show();
+
+                    try {
+
+                        tvCache.setText(CacheDataManager.getTotalCacheSize(SettingsActivity.this));
+
+                    } catch (Exception e) {
+
+                        e.printStackTrace();
+
+                    }
+
+            }
+
+        };
+
+    };
     @Override
     protected int getLayout() {
         return R.layout.activity_settings;
+    }
+    @Override
+    protected void getIntentData() {
+//        tvCache.setText("28KB");
+        try {
+            tvCache.setText(CacheDataManager.getTotalCacheSize(this));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.getIntentData();
     }
 
     @Override
@@ -94,6 +134,7 @@ public class SettingsActivity extends BaseActivity implements EventListener  {
                         .show();
                 break;
             case R.id.tv_cache:
+                new Thread(new clearCache()).start();
                 break;
             case R.id.rl_about:
                 new MaterialDialog.Builder(this)
@@ -161,6 +202,7 @@ public class SettingsActivity extends BaseActivity implements EventListener  {
                 break;
         }
     }
+
 
     private void start() {
         et_input.setText("");
@@ -239,4 +281,32 @@ public class SettingsActivity extends BaseActivity implements EventListener  {
 
 
 
+    //清除缓存
+    class clearCache implements Runnable {
+
+        @Override
+
+        public void run() {
+
+            try {
+
+                CacheDataManager.clearAllCache(SettingsActivity.this);
+
+                Thread.sleep(3000);
+
+                if (CacheDataManager.getTotalCacheSize(SettingsActivity.this).startsWith("0")) {
+
+                    handler.sendEmptyMessage(0);
+
+                }
+
+            } catch (Exception e) {
+
+                return;
+
+            }
+
+        }
+
+    }
 }
