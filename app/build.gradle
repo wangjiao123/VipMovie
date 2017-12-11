@@ -60,6 +60,11 @@ android {
         }
 
     }
+    sourceSets{
+        main{
+            jniLibs.srcDirs=['libs']
+        }
+    }
 }
 repositories {
     mavenCentral()
@@ -138,7 +143,11 @@ dependencies {
     compile 'com.android.support:design:26.1.0'
     compile 'com.android.support:percent:26.1.0'
     compile 'com.mikepenz:iconics-core:2.8.2@aar'
+    compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
     implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    implementation files('libs/bdasr_V3_20170929_c8984af.jar')
+
 
     implementation files('libs/gradle-wrapper.jar')
 
