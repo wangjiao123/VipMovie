@@ -24,6 +24,7 @@ import java.util.List;
  */
 
 public class HistoAdpater  extends RecyclerView.Adapter<HistoAdpater.MyViewHolder>{
+    //1111
     Context context;
     List<User> mdata;
 
