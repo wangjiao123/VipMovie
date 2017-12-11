@@ -6,6 +6,7 @@ import com.vip.movie.details.bean.DetailsBean;
 import com.vip.movie.found.bean.CardBean;
 import com.vip.movie.fuli.Bean.Women;
 import com.vip.movie.header.bean.Home;
+import com.vip.movie.search.sbean.SearchBean;
 
 import java.util.Map;
 
@@ -35,8 +36,10 @@ public interface ApiServer {
         //主页
         @GET("front/homePageApi/homePage.do")
         Observable<Home> getHome();
-//front/searchKeyWordApi/getVideoListByKeyWord.do
-//@POST
-//Observable<DetailsBean> getdetails(@Url String url, @QueryMap Map<String, String> map);
+
+    //front/searchKeyWordApi/getVideoListByKeyWord.do
+    @POST
+    //搜索
+    Observable<SearchBean> getSearch(@Url String url, @QueryMap Map<String, String> map);
 
 }

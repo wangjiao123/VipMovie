@@ -1,8 +1,6 @@
 package com.vip.movie.activitys;
 
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,6 +18,7 @@ import com.dou361.ijkplayer.widget.PlayerView;
 import com.vip.movie.MyApp;
 import com.vip.movie.R;
 import com.vip.movie.adapters.HomeAdapter;
+import com.vip.movie.base.BaseActivity;
 import com.vip.movie.details.bean.DetailsBean;
 import com.vip.movie.details.presenter.MyDeatilspresenter;
 import com.vip.movie.details.view.Details_view;
@@ -36,7 +35,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailsTwoActivity extends AppCompatActivity implements Details_view{
+public class DetailsTwoActivity extends BaseActivity implements Details_view{
 
 
 
@@ -153,31 +152,43 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
     private String title;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailstwo);
+    protected int getLayout() {
+        return R.layout.activity_detailstwo;
+    }
+
+    @Override
+    protected void initView() {
+        super.initView();
         ButterKnife.bind(this);
-
-//        String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
-//        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
-//        new PlayerView(this)
-//                .setTitle("什么")
-//                .setScaleType(PlayStateParams.fitparent)
-//                .hideMenu(true)
-//                .forbidTouch(false)
-//                .setPlaySource(url)
-//                .startPlay();
-
-
         EventBus.getDefault().register(this);
         mypre=new MyDeatilspresenter(this);
         mypre.setdetails(Api.Card_User,mediaid);
         mData=new ArrayList<>();
         tabLayout.getBackground().setAlpha(10);
 
-        initView();
-
+        initView1();
     }
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_detailstwo);
+//
+//
+////        String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
+////        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
+////        new PlayerView(this)
+////                .setTitle("什么")
+////                .setScaleType(PlayStateParams.fitparent)
+////                .hideMenu(true)
+////                .forbidTouch(false)
+////                .setPlaySource(url)
+////                .startPlay();
+//
+//
+//
+//
+//    }
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void receiveMessage(EventBusStickMessage eventBusStickMessage) {
         mediaid=eventBusStickMessage.Message;
@@ -194,7 +205,7 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
     }
 
 
-    private void initView() {
+    private void initView1() {
 
 
         tabLayout.addTab(tabLayout.newTab().setText("简介"));
