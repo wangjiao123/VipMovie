@@ -157,6 +157,20 @@ public class LikeButtonView extends FrameLayout implements View.OnClickListener 
             case MotionEvent.ACTION_DOWN:
                 mIvStar.animate().scaleX(0.7f).scaleY(0.7f).setDuration(150).setInterpolator(mDecelerate);
                 setPressed(true);
+//                if (url==null)
+//             {
+//                 Toast.makeText(getContext(),"地址为空",Toast.LENGTH_SHORT).show();
+//               }else{
+//                    boolean isrepetition = GreenDaoManager.getInstance().isrepetition(mediaid, 1);
+//                    if(!isrepetition)
+//                    {
+//                        dao.insert(new User(null, 1, title, pic, mediaid));
+//                        Toast.makeText(getContext(),"已收藏",Toast.LENGTH_SHORT).show();
+//
+//                    }else {
+//                        Toast.makeText(getContext(),"不能重复收藏",Toast.LENGTH_SHORT).show();
+//                    }
+//                }show
                 break;
 
             // 在控件内移动, 判断为点击.

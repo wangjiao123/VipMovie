@@ -10,11 +10,6 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class User {
-
- * Created by wangjiao on 2017/12/10.
- */
-@Entity
-public class User {
     //一直可添加
 
     @Id(autoincrement = true)

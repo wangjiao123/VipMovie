@@ -2,17 +2,11 @@ package com.vip.movie.activitys;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +22,7 @@ import com.vip.movie.MyApp;
 import com.vip.movie.R;
 import com.vip.movie.adapters.HomeAdapter;
 import com.vip.movie.adapters.PinlunAdapter;
+import com.vip.movie.bean.LikeButtonView;
 import com.vip.movie.bean.PinlunBean;
 import com.vip.movie.details.bean.DetailsBean;
 import com.vip.movie.details.fragments.JianFragment;
@@ -153,7 +148,6 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
     TabLayout tabLayout;
     @BindView(R.id.ll_sc_content)
 
-    LinearLayout layout;
 
     FrameLayout layout;
 
@@ -171,7 +165,6 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
 
     private String pic;
     private UserDao dao;
-    private TextView dtext;
  //   private List<User> users;
     private String video;
     private GreenDaoManager instance;
@@ -180,7 +173,7 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
     JianFragment jf;
     PinFragment pf;
     private PlayerView p;
-
+    private LikeButtonView likeButtonView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,54 +181,31 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
         setContentView(R.layout.activity_detailstwo);
         ButterKnife.bind(this);
 
-
-        dtext=(TextView) findViewById(R.id.dtext);
-
-
-
-        final String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
-        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
-        new PlayerView(this)
-                .setTitle("什么")
-                .setScaleType(PlayStateParams.fitparent)
-                .hideMenu(true)
-                .forbidTouch(false)
-                .setPlaySource(url)
-                .startPlay();
-
-
-
-
         EventBus.getDefault().register(this);
         mypre = new MyDeatilspresenter(this);
         mypre.setdetails(Api.Card_User, mediaid);
         mData = new ArrayList<>();
         list = new ArrayList<>();
         tabLayout.getBackground().setAlpha(10);
-
+        likeButtonView=(LikeButtonView) findViewById(R.id.iv_like);
         dao = GreenDaoManager.getInstance().getNewSession().getUserDao();
         instance=GreenDaoManager.getInstance();
       //  users=instance.loadAll(2);
 
         initView();
-        dtext.setOnClickListener(new View.OnClickListener() {
+        jf = new JianFragment(mData);
+        likeButtonView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 if (url==null)
                 {
                     Toast.makeText(DetailsTwoActivity.this,"地址为空",Toast.LENGTH_SHORT).show();
                 }else{
                     boolean isrepetition = GreenDaoManager.getInstance().isrepetition(mediaid, 1);
-
-        initView();
-        jf = new JianFragment(mData);
-
-
                     if(!isrepetition)
                     {
                         dao.insert(new User(null, 1, title, pic, mediaid));
                         Toast.makeText(DetailsTwoActivity.this,"已收藏",Toast.LENGTH_SHORT).show();
-
 
                     }else {
                         Toast.makeText(DetailsTwoActivity.this,"不能重复收藏",Toast.LENGTH_SHORT).show();
@@ -243,6 +213,7 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
                 }
             }
         });
+
     }
 
 
@@ -259,9 +230,6 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
         EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
-
-    private void initView() {
-
     public void addFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.ll_sc_content, fragment);
@@ -269,8 +237,6 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
         // 执行事务
         transaction.commit();
     }
-
-
 
     private void initView() {
         tabLayout.addTab(tabLayout.newTab().setText("简介"));
@@ -318,43 +284,23 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
         title = data.getRet().getTitle();
          pic = data.getRet().getPic();
         mData.add(data);
-
+        addFragment(jf);
         if (url==null)
         {
             Toast.makeText(DetailsTwoActivity.this,"地址为空",Toast.LENGTH_SHORT).show();
         }else{
 
                 dao.insert(new User(null, 2, title, pic, mediaid));
-                new PlayerView(this)
-                        .setTitle(data.getRet().getTitle())
-                        .setScaleType(PlayStateParams.fitparent)
-                        .hideMenu(true)
-                        .forbidTouch(false)
-                        .setPlaySource(url)
-                        .startPlay();
-
+                    p = new PlayerView(this)
+                    .setTitle(data.getRet().getTitle())
+                    .setScaleType(PlayStateParams.fitparent)
+                    .hideMenu(true)
+                    .forbidTouch(false)
+                    .setPlaySource(url)
+                    .startPlay();
 
         }
 
-        for (int i = 0; i < mData.size(); i++) {
-            View view = View.inflate(DetailsTwoActivity.this, R.layout.item_layout, null);
-            RecyclerView idRecyclerview=view.findViewById(R.id.id_recyclerview);
-            idRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-//            Log.d("main", "setScrollViewContent: 000000000000000000000000000000000000000000000000000");
-            idRecyclerview.setAdapter(mAdapter = new HomeAdapter(DetailsTwoActivity.this, mData));
-            //动态添加 子View
-            layout.addView(view, i);
-        }
-
-        addFragment(jf);
-
-        p = new PlayerView(this)
-                .setTitle(data.getRet().getTitle())
-                .setScaleType(PlayStateParams.fitparent)
-                .hideMenu(true)
-                .forbidTouch(false)
-                .setPlaySource(url)
-                .startPlay();
     }
 
     @Override

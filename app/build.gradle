@@ -8,6 +8,11 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+
+
+
+        flavorDimensions "versionCode"
+
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
@@ -38,10 +43,22 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
     }
+
     greendao {
         schemaVersion 1
         daoPackage 'com.vip.movie.greendao.gen'
         targetGenDir 'src/main/java'
+
+
+    productFlavors {
+
+        qh360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qh360"]
+        }
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+
     }
 }
 repositories {
@@ -133,5 +150,5 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.0'
 
 
-
+    }
 }

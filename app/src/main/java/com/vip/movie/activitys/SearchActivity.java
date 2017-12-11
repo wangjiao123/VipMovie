@@ -105,7 +105,6 @@ public class SearchActivity extends Activity implements SearchView {
     }
     @Override
     public void getSearchView(List<SearchBean.RetBean.ListBean> list) {
-
         recycleview.setLayoutManager(new GridLayoutManager(SearchActivity.this, 3));
         searchAdapter = new SearchAdapter(list, SearchActivity.this);
         recycleview.setAdapter(searchAdapter);

@@ -54,16 +54,10 @@
             android:theme="@style/CustomTransparent" />
 
 
-        <activity android:name=".activitys.SettingsActivity"></activity>
+
         <activity android:name=".thematic.Zhuantifenlei" android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
 
-        <activity android:name=".ShouchangActivity"></activity>
-
         <activity android:name=".activitys.SettingsActivity" />
-
-        <activity
-            android:name=".thematic.Zhuantifenlei"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity android:name=".ShouchangActivity" />
 
 
@@ -108,9 +102,13 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5a2923e2f43e480e9e000099" />
-
         <activity android:name=".activitys.HistoryActivtiy" />
         <activity android:name=".activitys.CollectionActivitry"></activity>
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
+
     </application>
 
 </manifest>

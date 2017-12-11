@@ -5,24 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
-
-    android:background="@mipmap/bg"
-    tools:context="com.vip.movie.activitys.DetailsTwoActivity">
-    <TextView
-        android:id="@+id/dtext"
-        android:text="收藏"
-        android:textColor="@android:color/white"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content" />
-
     android:background="@mipmap/bg_blue"
-
-    >
+    tools:context="com.vip.movie.activitys.DetailsTwoActivity">
+    <!--<TextView-->
+        <!--android:id="@+id/dtext"-->
+        <!--android:text="收藏"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_height="wrap_content" />-->
 
 
     <com.vip.movie.bean.LikeButtonView
+        android:id="@+id/iv_like"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/dark_black"
