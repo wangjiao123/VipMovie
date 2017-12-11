@@ -52,7 +52,26 @@ public class ZhiAdapter extends RecyclerView.Adapter<ZhiAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
+
         holder.tvt.setText(mDatas.get(position).getTitle());
+
+
+        ImageLoader.getInstance().displayImage(mDatas.get(position).getPic(),holder.si);
+       /* //创建DraweeController
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                //重试之后要加载的图片URI地址
+                .setUri(mDatas.get(position).getPic())
+                //设置点击重试是否开启
+                .setTapToRetryEnabled(true)
+                //动画播放
+                .setAutoPlayAnimations(true)
+                //设置旧的Controller
+                .setOldController(holder.sim.getController())
+                //构建
+                .build();
+        //设置DraweeController
+        holder.sim.setController(controller);*/
+
 
         //.getInstance().displayImage(mDatas.get(position).getPic(),holder.si);
         holder.si.setImageURI(mDatas.get(position).getPic());

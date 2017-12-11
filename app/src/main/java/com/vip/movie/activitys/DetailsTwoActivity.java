@@ -43,8 +43,6 @@ import butterknife.ButterKnife;
 public class DetailsTwoActivity extends AppCompatActivity implements Details_view{
 
 
-    @BindView(R.id.video_view)
-    IjkVideoView videoView;
     @BindView(R.id.iv_trumb)
     ImageView ivTrumb;
     @BindView(R.id.ll_bg)
@@ -163,15 +161,33 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailstwo);
         ButterKnife.bind(this);
+
         dtext=(TextView) findViewById(R.id.dtext);
+
+
+
+        final String url = "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_2a484c9357054db5901d4502247ee89d/ff8080815f09fc82015f0a1b9dab0056_1500.m3u8";
+        Toast.makeText(DetailsTwoActivity.this, url, Toast.LENGTH_SHORT).show();
+        new PlayerView(this)
+                .setTitle("什么")
+                .setScaleType(PlayStateParams.fitparent)
+                .hideMenu(true)
+                .forbidTouch(false)
+                .setPlaySource(url)
+                .startPlay();
+
+
+
         EventBus.getDefault().register(this);
         mypre=new MyDeatilspresenter(this);
         mypre.setdetails(Api.Card_User,mediaid);
         mData=new ArrayList<>();
         tabLayout.getBackground().setAlpha(10);
+
         dao = GreenDaoManager.getInstance().getNewSession().getUserDao();
         instance=GreenDaoManager.getInstance();
       //  users=instance.loadAll(2);
+
         initView();
         dtext.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -5,17 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
-    android:background="@mipmap/bg"
-    tools:context="com.vip.movie.activitys.DetailsTwoActivity">
-    <TextView
-        android:id="@+id/dtext"
-        android:text="收藏"
-        android:textColor="@android:color/white"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content" />
-
+    tools:context="com.vip.movie.activitys.DetailsActivity">
     <include
         layout="@layout/simple_player_view_player"
         android:layout_width="match_parent"
@@ -27,13 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#80ffffff"
-        android:layout_marginLeft="70dp"
-        app:tabIndicatorColor="#8008a936"
+        app:tabIndicatorColor="@color/colorAccent"
         app:tabMode="scrollable"
-        android:layout_gravity="center"
-        app:tabSelectedTextColor="#8008a936"
-        app:tabTextColor="@android:color/white"
-        />
+        android:layout_gravity="center_horizontal"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@android:color/black"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -50,3 +38,4 @@
     </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
+
