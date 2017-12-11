@@ -3,6 +3,8 @@ package com.vip.movie.me;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vip.movie.R;
+import com.vip.movie.activitys.CollectionActivitry;
+import com.vip.movie.activitys.HistoryActivtiy;
 import com.vip.movie.activitys.SettingsActivity;
+import com.vip.movie.adapters.HistoAdpater;
 import com.vip.movie.base.BaseFragment;
+import com.vip.movie.greendao.User;
+import com.vip.movie.utils.GreenDaoManager;
 import com.vip.movie.utils.theme.ColorTextView;
 
 import org.simple.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +57,11 @@ public class Framgmentfour extends BaseFragment {
     TextView tvThem;
     @BindView(R.id.tv_down)
     TextView tvDown;
-
+    @BindView(R.id.lishi_recyclerview)
+    RecyclerView fuliRecyclerview;
+    @BindView(R.id.rl_down)
+    RelativeLayout rlDown;
+    private HistoAdpater histoAdpater;
     @Override
     protected int getLayout() {
         return R.layout.four;
@@ -63,6 +77,7 @@ public class Framgmentfour extends BaseFragment {
         StringUtils.setIconDrawable(mContext, tvDown, MaterialDesignIconic.Icon.gmi_time_countdown, 16, 15);
         StringUtils.setIconDrawable(mContext, tvCollection, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 15);
         StringUtils.setIconDrawable(mContext, tvThem, MaterialDesignIconic.Icon.gmi_palette, 16, 15);*/
+
     }
 
     @OnClick(R.id.rl_them)
@@ -78,6 +93,19 @@ public class Framgmentfour extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
+        final List<User> greenDaoBeans = GreenDaoManager.getInstance().loadAll(2);
+        fuliRecyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        final ArrayList<User> arrayList = new ArrayList<>();
+        int size = greenDaoBeans.size();
+        if (size >= 3) {
+            arrayList.add(greenDaoBeans.get(size - 1));
+            arrayList.add(greenDaoBeans.get(size - 2));
+            arrayList.add(greenDaoBeans.get(size - 3));
+        } else {
+            arrayList.addAll(greenDaoBeans);
+        }
+        histoAdpater = new HistoAdpater( getActivity(),arrayList);
+        fuliRecyclerview.setAdapter(histoAdpater);
         return rootView;
     }
 
@@ -88,24 +116,29 @@ public class Framgmentfour extends BaseFragment {
     }
 
 
-
     @OnClick({R.id.img_setting, R.id.tv_history, R.id.tv_collection, R.id.tv_them, R.id.tv_down})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.img_setting:
-                Intent intent=new Intent(getActivity(), SettingsActivity.class);
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tv_history:
+                Intent intent1 = new Intent(getActivity(), HistoryActivtiy.class);
+                startActivity(intent1);
                 break;
             case R.id.tv_collection:
+                Intent intent2 = new Intent(getActivity(), CollectionActivitry.class);
+                startActivity(intent2);
                 break;
             case R.id.tv_them:
                 break;
             case R.id.tv_down:
-
+                Toast.makeText(getActivity(),"敬请期待",Toast.LENGTH_SHORT).show();
                 break;
         }
     }
+
+
 }
 

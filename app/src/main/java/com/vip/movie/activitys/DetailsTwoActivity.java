@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dou361.ijkplayer.widget.IjkVideoView;
 import com.dou361.ijkplayer.widget.PlayStateParams;
@@ -23,7 +25,10 @@ import com.vip.movie.details.bean.DetailsBean;
 import com.vip.movie.details.presenter.MyDeatilspresenter;
 import com.vip.movie.details.view.Details_view;
 import com.vip.movie.found.bean.EventBusStickMessage;
+import com.vip.movie.greendao.User;
+import com.vip.movie.greendao.gen.UserDao;
 import com.vip.movie.utils.Api;
+import com.vip.movie.utils.GreenDaoManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -140,10 +145,6 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
     TabLayout tabLayout;
     @BindView(R.id.ll_sc_content)
     LinearLayout layout;
-
-
-
-
     private List<DetailsBean> mData;
     HomeAdapter mAdapter;
     String mediaid="";
@@ -151,25 +152,54 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
     private String url;
     private String des;
     private String title;
-
+    private String pic;
+    private UserDao dao;
+    private TextView dtext;
+ //   private List<User> users;
+    private String video;
+    private GreenDaoManager instance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailstwo);
         ButterKnife.bind(this);
+        dtext=(TextView) findViewById(R.id.dtext);
         EventBus.getDefault().register(this);
         mypre=new MyDeatilspresenter(this);
         mypre.setdetails(Api.Card_User,mediaid);
         mData=new ArrayList<>();
         tabLayout.getBackground().setAlpha(10);
+        dao = GreenDaoManager.getInstance().getNewSession().getUserDao();
+        instance=GreenDaoManager.getInstance();
+      //  users=instance.loadAll(2);
         initView();
+        dtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (url==null)
+                {
+                    Toast.makeText(DetailsTwoActivity.this,"地址为空",Toast.LENGTH_SHORT).show();
+                }else{
+                    boolean isrepetition = GreenDaoManager.getInstance().isrepetition(mediaid, 1);
 
+
+                    if(!isrepetition)
+                    {
+                        dao.insert(new User(null, 1, title, pic, mediaid));
+                        Toast.makeText(DetailsTwoActivity.this,"已收藏",Toast.LENGTH_SHORT).show();
+
+
+                    }else {
+                        Toast.makeText(DetailsTwoActivity.this,"不能重复收藏",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void receiveMessage(EventBusStickMessage eventBusStickMessage) {
         mediaid=eventBusStickMessage.Message;
     }
-
     @Override
     protected void onDestroy() {
         //移除所有黏性事件
@@ -178,8 +208,6 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
-
-
     private void initView() {
 
 
@@ -218,15 +246,25 @@ public class DetailsTwoActivity extends AppCompatActivity implements Details_vie
         url = data.getRet().getSmoothURL();
         des = data.getRet().getDescription();
         title = data.getRet().getTitle();
+         pic = data.getRet().getPic();
         mData.add(data);
+        if (url==null)
+        {
+            Toast.makeText(DetailsTwoActivity.this,"地址为空",Toast.LENGTH_SHORT).show();
+        }else{
 
-        new PlayerView(this)
-                .setTitle(data.getRet().getTitle())
-                .setScaleType(PlayStateParams.fitparent)
-                .hideMenu(true)
-                .forbidTouch(false)
-                .setPlaySource(url)
-                .startPlay();
+                dao.insert(new User(null, 2, title, pic, mediaid));
+                new PlayerView(this)
+                        .setTitle(data.getRet().getTitle())
+                        .setScaleType(PlayStateParams.fitparent)
+                        .hideMenu(true)
+                        .forbidTouch(false)
+                        .setPlaySource(url)
+                        .startPlay();
+
+
+        }
+
         for (int i = 0; i < mData.size(); i++) {
             View view = View.inflate(DetailsTwoActivity.this, R.layout.item_layout, null);
             RecyclerView idRecyclerview=view.findViewById(R.id.id_recyclerview);

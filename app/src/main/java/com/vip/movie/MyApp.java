@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatDelegate;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.vip.movie.utils.GreenDaoManager;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +18,7 @@ import java.util.Set;
  */
 
 public class MyApp extends Application {
+
     private static Context context;
     public static Context getContext() {
         return context;
@@ -36,8 +38,10 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context = this;
+        context = this.getApplicationContext();
         instance=this;
+        //初始化GreenDaoManager
+        GreenDaoManager.getInstance();
         //必须初始化Fresco,不然加载不出来图片
         Fresco.initialize(this);
         ImageLoaderConfiguration aDefault = ImageLoaderConfiguration.createDefault(getApplicationContext());

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vip.movie">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,7 +14,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
-
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -23,8 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activitys.WelcomeActivity">
-        android:theme="@style/Theme.Design.Light.NoActionBar">
-
+            android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,51 +33,56 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/CustomTransparent" />
-        <activity android:name=".activitys.SettingsActivity"></activity>
-        <activity android:name=".activitys.DetailsTwoActivity"></activity>
-        <activity android:name=".thematic.Zhuantifenlei" android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
-        <activity android:name=".ShouchangActivity"></activity>
+        <activity android:name=".activitys.SettingsActivity" />
+        <activity android:name=".activitys.DetailsTwoActivity" />
+        <activity
+            android:name=".thematic.Zhuantifenlei"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name=".ShouchangActivity" />
 
-        <!--<闫鑫/>-->
-        <activity android:name=".fuli.View.fuliActivity"></activity>
+        <!-- <闫鑫/> -->
+        <activity android:name=".fuli.View.fuliActivity" />
         <activity
             android:name="com.umeng.qq.tencent.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent100424468" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.umeng.qq.tencent.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:exported="false"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
             android:launchMode="singleTask"
-            android:name="com.sina.weibo.sdk.share.WbShareTransActivity">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
+
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a2923e2f43e480e9e000099">
-        </meta-data>
+            android:value="5a2923e2f43e480e9e000099" />
+
+        <activity android:name=".activitys.HistoryActivtiy" />
+        <activity android:name=".activitys.CollectionActivitry"></activity>
     </application>
 
 </manifest>
