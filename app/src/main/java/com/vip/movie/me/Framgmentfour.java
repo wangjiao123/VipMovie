@@ -98,6 +98,13 @@ public class Framgmentfour extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
+
+        return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         final List<User> greenDaoBeans = GreenDaoManager.getInstance().loadAll(2);
         fuliRecyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         final ArrayList<User> arrayList = new ArrayList<>();
@@ -109,9 +116,11 @@ public class Framgmentfour extends BaseFragment {
         } else {
             arrayList.addAll(greenDaoBeans);
         }
+
         histoAdpater = new HistoAdpater( getActivity(),arrayList);
         fuliRecyclerview.setAdapter(histoAdpater);
-        return rootView;
+        //5   arrayList.clear();
+        histoAdpater.notifyDataSetChanged();
     }
 
     @Override

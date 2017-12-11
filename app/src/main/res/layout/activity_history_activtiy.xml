@@ -1,41 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bg_blue"
     tools:context="com.vip.movie.activitys.HistoryActivtiy">
+
     <LinearLayout
-        android:orientation="horizontal"
-        android:background="@color/colorAccent"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPurplePrimary"
+        android:orientation="horizontal">
+
         <ImageView
+            android:layout_marginLeft="5dp"
             android:id="@+id/h_img"
-            android:src="@mipmap/back"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/back" />
+
         <TextView
-            android:text="历史"
-            android:textSize="20dp"
-            android:textColor="@android:color/white"
-            android:layout_gravity="center"
-            android:layout_marginLeft="170dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="150dp"
+            android:text="历史"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
         <TextView
             android:id="@+id/qingl"
-            android:text="清除"
-            android:layout_marginLeft="110dp"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="110dp"
+            android:text="清除"
+            android:textColor="@android:color/white" />
     </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/his_recy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout2" />
+</RelativeLayout>
