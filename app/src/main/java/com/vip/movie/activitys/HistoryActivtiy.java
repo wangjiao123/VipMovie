@@ -50,6 +50,7 @@ public class HistoryActivtiy extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.h_img:
+                //qwer
                 finish();
                 break;
             case R.id.qingl:
