@@ -186,7 +186,6 @@ public class DetailsTwoActivity extends FragmentActivity implements Details_view
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void receiveMessage(EventBusStickMessage eventBusStickMessage) {
         mediaid = eventBusStickMessage.Message;
-
     }
 
     @Override
