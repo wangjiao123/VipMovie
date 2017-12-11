@@ -56,9 +56,9 @@
     <application
         android:name=".MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/gui"
+        android:icon="@drawable/gui"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/gui"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
