@@ -116,5 +116,15 @@ dependencies {
     compile 'com.android.support:percent:26.1.0'
     compile 'com.mikepenz:iconics-core:2.8.2@aar'
     implementation 'com.android.support:appcompat-v7:26.1.0'
+
     implementation files('libs/gradle-wrapper.jar')
+
+
+    compile 'com.afollestad.material-dialogs:core:0.9.1.0'
+    compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
+
+    //GreenDao
+    compile 'org.greenrobot:greendao:3.2.0'
+
+
 }

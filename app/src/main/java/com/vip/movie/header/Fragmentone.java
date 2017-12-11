@@ -190,6 +190,9 @@ public class Fragmentone extends BaseFragment implements HView, SwipeRefreshLayo
             public void onItemClick(XBanner banner, int position) {
 
 
+                //跳转到详情页面
+                Toasts.showShort(getActivity() , "tangtangtangtangtang");
+
                 EventBus.getDefault().postSticky(new EventBusStickMessage(list.getList().get(0).getChildList().get(position).getDataId()));
                 Intent in=new Intent(getActivity(), DetailsTwoActivity.class);
                 startActivity(in);
