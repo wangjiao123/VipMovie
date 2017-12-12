@@ -69,7 +69,8 @@
             android:name=".MainActivity"
             android:theme="@style/CustomTransparent" />
         <activity android:name=".activitys.SettingsActivity" />
-        <activity android:name=".activitys.DetailsTwoActivity" />
+        <activity android:name=".activitys.DetailsTwoActivity" android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ShouchangActivity" />
 
         <meta-data

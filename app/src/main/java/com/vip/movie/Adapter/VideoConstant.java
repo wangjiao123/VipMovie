@@ -31,16 +31,15 @@ public class VideoConstant {
             {
                     {
 
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
-                            "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
+                            "http://movie.vods00.cnlive.com/video/data1/2017/0801/232311/1500/42d1670fca0c49158d7521368ea14114_232311_1500.m3u8",
+                            "http://movie.vods1.cnlive.com/3/vod/2017/0607/3_da131623be6e40378e3da8c949dd3874/ff8080815bf6b453015c82db4adc192a_1500.m3u8",
+                            "http://movie.vods2.cnlive.com/3/vod/2017/1016/3_da543985c600483ea61bf00f77286016/ff8080815f09fc82015f2403add427fe_1500.m3u8",
+                            "http://movie.vods00.cnlive.com/video/data1/2017/0424/206681/1500/ac6f9e02191b4b5fab0d3a4155e8ff1a_206681_1500.m3u8",
+                            "http://movie.vods00.cnlive.com/video/data1/2017/0424/206857/1500/99512a52e1e84bf0969632f7f3353e58_206857_1500.m3u8",
+                            "http://movie.vods2.cnlive.com/3/vod/2017/1011/3_a288cbab4c94496bad395be325384903/ff8080815ed2cba4015f09e2d95833b9_1500.m3u8",
+                            "http://movie.vods00.cnlive.com/video/data1/2017/0424/206889/1500/093c404e62244f52abc420e809490566_206889_1500.m3u8",
+                            "http://movie.vods00.cnlive.com/video/data1/2017/0801/232327/1500/04c2e66edae648e7a826631be3f04541_232327_1500.m3u8",
+                            "http://movie.vods00.cnlive.com/video/data1/2017/0614/221753/1500/871bd907af794c1f9fde3aeead93bcf2_221753_1500.m3u8",
                     },
                     {
                             "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4",
@@ -59,16 +58,15 @@ public class VideoConstant {
     public static String[][] videoThumbs =
             {
                     {
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/bd7ffc84-8407-4037-a078-7d922ce0fb0f.jpg",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/f2dbd12e-b1cb-4daf-aff1-8c6be2f64d1a.jpg",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/ccd86ca1-66c7-4331-9450-a3b7f765424a.png",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/2adde364-9be1-4864-b4b9-0b0bcc81ef2e.jpg",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/2a877211-4b68-4e3a-87be-6d2730faef27.png",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/aaeb5da9-ac50-4712-a28d-863fe40f1fc6.png",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/e565f9cc-eedc-45f0-99f8-5b0fa3aed567%281%29.jpg",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/3430ec64-e6a7-4d8e-b044-9d408e075b7c.jpg",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/2204a578-609b-440e-8af7-a0ee17ff3aee.jpg",
-                            "http://jzvd-pic.nathen.cn/jzvd-pic/1bb2ebbe-140d-4e2e-abd2-9e7e564f71ac.png"
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/08/02/1501645228836064293.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/06/08/1496906118431015898.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/10/16/1508141681220073492.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/04/25/1493099157790084296.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/05/11/1494498109520075200.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/10/11/1507706149882000991.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/04/25/1493104558064012790.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/08/02/1501644918808023911.jpg",
+                            "http://phonemovie.ks3-cn-beijing.ksyun.com/image/2017/06/21/1498038092953029053.jpg",
                     },
                     {
                             "http://jzvd-pic.nathen.cn/jzvd-pic/f18ee453-6aec-40a5-a046-3203111dd303.jpg",
@@ -87,16 +85,15 @@ public class VideoConstant {
     public static String[][] videoTitles =
             {
                     {
-                            "饺子出来",
-                            "饺子溢出",
-                            "饺子我姓王",
-                            "饺子趴好了",
-                            "饺子很渴",
-                            "饺子这样不好",
-                            "饺子别笑",
-                            "饺子坐火车",
-                            "饺子打游戏",
-                            "饺子快长大"
+                            "黑侠2",
+                            "复仇者联盟2：奥创纪元",
+                            "《情遇曼哈顿》主创上海见面会",
+                            "赤胆情",
+                            "天若有情",
+                            "《妖妖玲》 发布会回放",
+                            "鳄潭群英会",
+                            "龙凤智多星",
+                            "老虎出更",
                     },
                     {
                             "饺子堵车了",
