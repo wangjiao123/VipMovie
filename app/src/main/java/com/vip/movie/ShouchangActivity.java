@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.vip.movie.Adapter.ShoucangAdapter;
 import com.vip.movie.greendao.User;
 import com.vip.movie.greendao.gen.UserDao;
+import com.vip.movie.utils.GreenDaoManager;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class ShouchangActivity extends AppCompatActivity {
     Button scClear;
     private List<User> users;
     private ShoucangAdapter sa;
-
+    private GreenDaoManager instance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +36,10 @@ public class ShouchangActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         shoucang.setLayoutManager(new GridLayoutManager(this,2));
-        userDao = MyApp.getInstance().getDaoSession().getUserDao();
-        users = userDao.loadAll();
+      //  userDao = MyApp.getInstance().getDaoSession().getUserDao();
+      //  users = userDao.loadAll();
+        instance = GreenDaoManager.getInstance();
+        users = instance.loadAll(1);
         sa = new ShoucangAdapter(this, users);
         shoucang.setAdapter(sa);
     }

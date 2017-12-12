@@ -1,11 +1,6 @@
 package com.vip.movie;
 
 
-
-import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.NonNull;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -36,6 +31,7 @@ import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMWeb;
 import com.vip.movie.activitys.SettingsActivity;
+import com.vip.movie.activitys.VideoActivity;
 import com.vip.movie.base.BaseActivity;
 import com.vip.movie.found.Fragmentthree;
 import com.vip.movie.fuli.View.fuliActivity;
@@ -88,13 +84,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     SimpleDraweeView sdv;
     @BindView(R.id.layout1)
     RelativeLayout layout1;
+    @BindView(R.id.shipin)
+    TextView shipin;
     private Fragmentone one;
     private Fragmenttwo two;
     private Fragmentthree three;
     private Framgmentfour four;
     private UMAuthListener umAuthListener;
     String iconurl;
-FragmentManager fm;
+    FragmentManager fm;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_main;
@@ -174,7 +173,7 @@ FragmentManager fm;
 
     @Subscriber(tag = Framgmentfour.SET_THEME)
     public void setTheme(String content) {
-        fm=getSupportFragmentManager();
+        fm = getSupportFragmentManager();
         new ColorChooserDialog.Builder(this, R.string.theme)
                 .customColors(R.array.colors, null)
                 .doneButton(R.string.done)
@@ -317,10 +316,15 @@ FragmentManager fm;
                         .open();
                 break;
             case R.id.talk:
+                Intent v = new Intent(MainActivity.this, VideoActivity.class);
+                startActivity(v);
                 break;
             case R.id.setting:
-                Intent i=new Intent(MainActivity.this,SettingsActivity.class);
+                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(i);
+                break;
+            case R.id.shipin:
+
                 break;
             case R.id.about:
                 new MaterialDialog.Builder(this)
@@ -359,7 +363,7 @@ FragmentManager fm;
                 .cancelButton(R.string.cancel)
                 .allowUserColorInput(false)
                 .allowUserColorInputAlpha(false)
-               .show(fm);
+                .show(fm);
     }
 
     @Override
